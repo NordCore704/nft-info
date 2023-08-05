@@ -8,14 +8,37 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+.bg {
+  background-color: rgb(232, 237, 238);
+}
+.line-text{
+  writing-mode: vertical-lr;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
+  form, .invert-dark{
+    filter: invert(1);
+  }
+  .invert-dark-text{
+      color: black;
+  }
+  .invert-white{
+    background: white;
+  }
 }
 
+.transition{
+  transition: all ease-in-out .5s;
+}
+
+.red-border{
+  border: 2px solid red;
+  /* transition: 0.3s ease-in-out; */
+}
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -24,4 +47,68 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+.active {
+  color: hsl(142, 71%, 45%);
+}
+.active-page {
+  background-color: hsl(142, 71%, 45%);
+}
+.sliding {
+  animation: sliding 10s linear infinite;
+  transition: ease-in-out;
+}
+.sliding2 {
+  animation: sliding2 8s linear infinite;
+  transition: ease-in-out;
+}
+@keyframes sliding {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@keyframes sliding2 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.rotating {
+  animation: rotating 3s linear infinite;
+  transition: ease-in-out;
+}
+.rotating-2 {
+  animation: rotating2 3s linear infinite;
+  transition: ease-in-out;
+}
+@keyframes rotating2 {
+  0% {
+    transform: rotate(-360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.overlay {
+  background: #00000038;
+}
+@media screen and (width <= 500px){
+  .line-text{
+    writing-mode: horizontal-tb;
+
+  }
 }

@@ -1,0 +1,183 @@
+{
+  "chain": "eth-main",
+  "total": 25,
+  "cursor": null,
+  "per_page": "25",
+  "results": [
+    {
+      "token_type": "erc721",
+      "contract_address": "0xf79631521c474984f17d656a05e0d317d8755b20",
+      "example_token_id": "44699",
+      "example_token_name": "Layer Zero Ape",
+      "example_token_description": "This ape is waiting to be revealed. Layer Zero Apes are 3000 omnichain apes transferable among 7 chains with."
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0x5d666f215a85b87cb042d59662a7ecd2c8cc44e6",
+      "example_token_id": "6361347",
+      "example_token_name": "APE 2023",
+      "example_token_description": ""
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0x8b81043ac0fe5676b31005b772bec79d4aa19fe4",
+      "example_token_id": "202150",
+      "example_token_name": "Bored Ape Yacht Club-imToken",
+      "example_token_description": ""
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0x04fdc08598f50ffb09ae9a063b04c1227a546d7e",
+      "example_token_id": "23474",
+      "example_token_name": "Trippin Ape Tribe",
+      "example_token_description": "A Psychedelic Experiment | Clinical Trials Are Underway… built by: @VALHALLA__LABS 💫. 0% royalties, 20% percent of mint donated to the Mental Health Index Fund. Visit [https://trippinsape.com.com](https://trippinsape.com.com) to mint"
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0x595046c0891c128fcdc46ea461501e9b4b3bd0bd",
+      "example_token_id": "34459",
+      "example_token_name": "Wich Ball Ape Whitelist",
+      "example_token_description": "https://wcac9.com We will randomly airdrop Wich Ball Ape MINT whitelist to lucky users who have interacted with Opensea. Users who have obtained the NFT whitelist can obtain WCAC NFT for free through MINT through our official website www.wcac9.com. We are a legitimate project, please rest assured, if you want to know the progress of our project, you can visit the official website to check the roadmap."
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0xfa674af1bf10ff726292eba614629d12c5b62545",
+      "example_token_id": "20693",
+      "example_token_name": "World Cup Ape Whitelist",
+      "example_token_description": "https://wcac9.com We will randomly airdrop World Cup Ape MINT whitelist to lucky users who have interacted with Opensea. Users who have obtained the NFT whitelist can obtain WCAC NFT for free through MINT through our official website www.wcac9.com. We are a legitimate project, please rest assured, if you want to know the progress of our project, you can visit the official website to check the roadmap."
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0x987137fc1181d803292038afe96976e321d5f2ff",
+      "example_token_id": "28668",
+      "example_token_name": "World Cup Ape Whitelist",
+      "example_token_description": "https://wcac9.com We will randomly airdrop World Cup Ape MINT whitelist to lucky users who have interacted with Opensea. Users who have obtained the NFT whitelist can obtain WCAC NFT for free through MINT through our official website www.wcac9.com. We are a legitimate project, please rest assured, if you want to know the progress of our project, you can visit the official website to check the roadmap."
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0xf5550671ad6d02e06af6a105a0a5c81cc64e2d6c",
+      "example_token_id": "23128",
+      "example_token_name": "Wich Ball Ape Whitelist",
+      "example_token_description": "https://wcac9.com We will randomly airdrop Wich Ball Ape MINT whitelist to lucky users who have interacted with Opensea. Users who have obtained the NFT whitelist can obtain WCAC NFT for free through MINT through our official website www.wcac9.com. We are a legitimate project, please rest assured, if you want to know the progress of our project, you can visit the official website to check the roadmap."
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0x44eb652667b18bd67dfad1ddc8ab3e515919fce0",
+      "example_token_id": "14332",
+      "example_token_name": "Fashion Girl APE Blinds Boxs",
+      "example_token_description": "Website: https://fashionfemaleape.club Users who have obtained the Fashion Girl APE Blind Box can visit our official website to open the Blind Box to obtain the female ape NFT. The female ape collection consists of 10,000 unique female ape NFTs. we randomly give random airdrops to lucky users who have interacted with opensea. Please don't worry, we are a legitimate projec."
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0xe33e7f8e5bca9035e60ef704753c2e066c353f87",
+      "example_token_id": "2888",
+      "example_token_name": "Fashion Girl APE Blinds Boxs",
+      "example_token_description": "Website: https://fashionfemaleape.club Users who have obtained the Fashion Girl APE Blind Box can visit our official website to open the Blind Box to obtain the female ape NFT. The female ape collection consists of 10,000 unique female ape NFTs. we randomly give random airdrops to lucky users who have interacted with opensea. Please don't worry, we are a legitimate projec."
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0xa1a31f031e1c90e342617cfc5f40102759cf9fdd",
+      "example_token_id": "731",
+      "example_token_name": "Fashion Girl APE Blinds Boxs",
+      "example_token_description": "Website: https://fashionfemaleape.club Users who have obtained the Fashion Girl APE Blind Box can visit our official website to open the Blind Box to obtain the female ape NFT. The female ape collection consists of 10,000 unique female ape NFTs. we randomly give random airdrops to lucky users who have interacted with opensea. Please don't worry, we are a legitimate projec."
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0xc71a726d390bf02b4af8920c0820970310d0f367",
+      "example_token_id": "32932",
+      "example_token_name": "Meka Ape #32932",
+      "example_token_description": ""
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0xd4c3c23349348fa67f6d044f1357c54d8e6a661b",
+      "example_token_id": "10407",
+      "example_token_name": "Ape Kid's Pet #10407",
+      "example_token_description": "Christmas is around the corner and the Ape Kids are making wishes to receive a pet to be their Christmas gift. Santa heard the kids' wishes and prepared Puppy, Cat, Birds and Fish to give them..."
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0xb5e89dc549b070cdd51fc18f1072ae9ec6e7a7c2",
+      "example_token_id": "150500",
+      "example_token_name": "Bored Ape Yacht Club - imToken",
+      "example_token_description": ""
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0xc36442b4a4522e871399cd717abdd847ab11fe88",
+      "example_token_id": "382910",
+      "example_token_name": "Uniswap - 0.3% - APE/WETH - 165.96<>400.90",
+      "example_token_description": "This NFT represents a liquidity position in a Uniswap V3 APE-WETH pool. The owner of this NFT can modify or redeem the position.\n\nPool Address: 0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf\nAPE Address: 0x4d224452801aced8b2f0aebe155379bb5d594381\nWETH Address: 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\nFee Tier: 0.3%\nToken ID: 382910\n\n⚠️ DISCLAIMER: Due diligence is imperative when assessing this NFT. Make sure token addresses match the expected tokens, as token symbols may be imitated."
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0xbbaa1d0c583d1ccb4154bc6e44a35c1c7aa3a883",
+      "example_token_id": "81",
+      "example_token_name": "Opti Smoked Ape 🔴#81",
+      "example_token_description": "NFT collection showcases digital artworks of ape with serious expressions. This collection is perfect for those who appreciate humor and satire in their art. "
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0x19f918b5352fe3316564f5245942c57d78d6cf9d",
+      "example_token_id": "16404",
+      "example_token_name": "Legendary Mutated Ape #404",
+      "example_token_description": ""
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0x7f29b85834d6a2ba4bb1c64325686c6057b1b3c5",
+      "example_token_id": "18682",
+      "example_token_name": "Ape #8682",
+      "example_token_description": "This is one of 10,000 Apes created under one of four Guilds. The Creator brought us the Apes to help the Bulls reach their potential. This Ape is yours and you will have the ability to customize and design your Ape through dynamic trait mechanics. Welcome to the Bulls & Apes Project!"
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0x762c1364ae9b70d143e48a924d7687ef74aeb592",
+      "example_token_id": "1290",
+      "example_token_name": "AES Ape #1290",
+      "example_token_description": ""
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0x82592bc6df83f4491c6719840190a8f65bf9aae7",
+      "example_token_id": "5266",
+      "example_token_name": "Bored Ape Beach Hut #5266",
+      "example_token_description": "BAYC derivative collection hand drawn in the Malibu Beach Hut style."
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0x9bf252f97891b907f002f2887eff9246e3054080",
+      "example_token_id": "2895",
+      "example_token_name": "Ape Kids Club #2895",
+      "example_token_description": "In a magical world where apes ruled the metaverse, a magical thousand-year-old tree sprouted cute baby apes. A flock of storks were the loyal companions of the thousand-year-old tree. One sunny day, a total of 9999 baby apes were born with more than 309 traits!"
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0x1b1bff222999bcd6fd07b64d7880e6a95d54acaa",
+      "example_token_id": "7722",
+      "example_token_name": "Lazy Ape Official #7722",
+      "example_token_description": "LAO is a hybrid collection of 10,000 unique NFT's living on the Ethereum Blockchain. Your Lazy Ape will grant you access to future benefits exclusively for members only."
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0x6381f104326b730f016837505cfaec2295a4cb9d",
+      "example_token_id": "1743",
+      "example_token_name": "Christmas Ape Gifts",
+      "example_token_description": "Official website: https://christmasape.com We airdrop Christmas Ape to Opensea users, and every user who gets the Christmas Ape airdrop can visit the official website to claim it. Merry Christmas to all users who received airdrops! ! ! Please don't worry, we are a legit project! We are certified by opensea."
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0x1de933596973bf762a3d1d7c28cac55ddd557598",
+      "example_token_id": "4",
+      "example_token_name": "Fashion Female APE Blinds",
+      "example_token_description": "Website: https://fashionfemaleape.club Users who have obtained Fashion Female APE Blind Box can log in to our official website to open the Blind Box to obtain NFT. Holders of Fashion Girl NFT can receive airdrop tokens. We randomly give random airdrops to lucky users who have interacted with opensea. Please don't worry, we are a legitimate project."
+    },
+    {
+      "token_type": "erc721",
+      "contract_address": "0x4df8252fea9d8bd301ef8c17560a91e5f0bc2bb7",
+      "example_token_id": "4",
+      "example_token_name": "Fashion Female APE Blinds",
+      "example_token_description": "Website: https://fashionfemaleape.club Users who have obtained Fashion Female APE Blind Box can log in to our official website to open the Blind Box to obtain NFT. Holders of Fashion Girl NFT can receive airdrop tokens. We randomly give random airdrops to lucky users who have interacted with opensea. Please don't worry, we are a legitimate project."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+
+{
+  "contract_address": "0x41f56b000fffe17943fb4c182c123767af71d005",
+  "token_id": "177",
+  "chain": "eth-main",
+  "total_owners": 1,
+  "unique_owners": 1,
+  "cursor": null,
+  "per_page": "25",
+  "results": [
+    {
+      "token_type": "erc721",
+      "contract_address": "0x41f56b000fffe17943fb4c182c123767af71d005",
+      "id": "177",
+      "owner_address": "0x9f7c7526cd449bc9c05855349e30aa409b4aa5f4",
+      "times_acquired": 1,
+      "minted_at": "2022-06-04T02:34:18.000Z",
+      "first_owned": "2022-06-04T02:34:18.000Z",
+      "last_owned": "2022-06-04T02:34:18.000Z",
+      "quantity": "1",
+      "owner_type": "wallet"
+    }
+  ]
+}
