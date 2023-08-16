@@ -29,7 +29,7 @@ const NftDisplay = () => {
 
   }
   return (
-    <motion.div className="flex flex-col gap-5" variants={parentAnimationVariants} initial='init' animate='animate' transition={{
+    <motion.div className="flex flex-col gap-5" variants={parentAnimationVariants}  initial='init' animate='animate' transition={{
       ease: 'easeInOut',
       duration: .5,
       staggerChildren: 0.4,
@@ -43,7 +43,7 @@ const NftDisplay = () => {
         NFTs
       </p>
     </div>
-    <motion.div className="rounded-t-lg bg-bottom bg-gradient-to-b from-green-600 relative" variants={nftAnimationVariants} transition={{
+    <motion.div className="rounded-t-lg bg-gradient-to-b lg:bg-gradient-to-t  from-green-600 lg:to-scheme-green-dark relative lg:z-30" variants={nftAnimationVariants} transition={{
       ease: 'easeInOut',
       duration: .8,
       type: 'spring',
@@ -52,11 +52,11 @@ const NftDisplay = () => {
     }}>
       <Image
         src={displayNFT}
-        className="relative w-[100%] md:top-0 -top-14 sm:top-0 lg:-top-14"
+        className="relative w-[100%] md:top-0 -top-14 sm:top-0 lg:-top-14 lg:z-40"
         alt='nft-display'
       />
     </motion.div>
-    {/* <div className="absolute w-[80%] h-[60%] top-10 bg-green-500 z-0"></div> */}
+   
   </motion.div>
   )
 }

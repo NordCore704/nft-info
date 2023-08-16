@@ -29,6 +29,9 @@
   .invert-white{
     background: white;
   }
+  .invert-none{
+    filter: invert();
+  }
 }
 
 .transition{

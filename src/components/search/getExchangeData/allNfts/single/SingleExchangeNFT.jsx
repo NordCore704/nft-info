@@ -1,40 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { retroNftFull } from "@/exports/image-exports";
-import { SingleStats, SingleExchangeUrls, SingleExchangeContracts, } from "@/exports";
-import { BsArrow90DegDown } from "react-icons/bs";
+import {
+  SingleStats,
+  SingleExchangeUrls,
+  SingleExchangeContracts,
+} from "@/exports";
+import { MdArrowDropDown } from "react-icons/md";
 
 const SingleExchangeNFT = ({ data }) => {
-  const [showStats, setShowStats] = useState(false);
-  const [showUrls, setShowUrls] = useState(false);
-  const [showContracts, setShowContracts] = useState(false);
-
-  const handleStatsToggle = () => {
-    setShowStats((prev) => !prev);
-    setShowUrls(false);
-    setShowContracts(false);
-  };
-  const handleUrlsToggle = () => {
-    setShowUrls((prev) => !prev);
-    setShowStats(false);
-    setShowContracts(false);
-  };
-  const handleContractsToggle = () => {
-    setShowUrls(false);
-    setShowStats(false);
-    setShowContracts((prev) => !prev);
-  };
-
   return (
     <div className="min-h-screen p-4 overflow-hidden">
       {data ? (
         <>
-          <div className="min-h-screen">
+          <div className="">
             {data.map((data, index) => (
-              <div
-                className="w-full min-h-screen flex flex-col gap-3"
-                key={index}
-              >
+              <div className="w-full flex flex-col gap-3" key={index}>
                 <div className="h-[50%] rounded-lg">
                   <Image
                     alt="nftImage"
@@ -69,33 +50,36 @@ const SingleExchangeNFT = ({ data }) => {
                   <p className="uppercase font-semibold text-xl">Description</p>
                   <p>{data.description}</p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col gap-2">
                   <div className="flex flex-col">
-                    <button
-                      className="font-semibold hover:text-scheme-red duration-200 transition-colors flex items-center gap-1"
-                      onClick={handleStatsToggle}
-                    >
-                      Stats <BsArrow90DegDown />
-                    </button>
-                    {showStats && <SingleStats data={data.stats} />}
+                    <details className="group w-full justify-start flex items-center gap-1 ">
+                      <summary className="flex items-center gap-1 marker:content-none hover:cursor-pointer duration-200 transition-colors hover:text-scheme-red font-semibold w-full">
+                        Stats <MdArrowDropDown className="mt-0.5" />
+                      </summary>
+                      <article className="">
+                        <SingleStats data={data.stats} />
+                      </article>
+                    </details>
                   </div>
                   <div className="flex flex-col">
-                    <button
-                      className="font-semibold hover:text-scheme-red duration-200 transition-colors flex items-center gap-1"
-                      onClick={handleUrlsToggle}
-                    >
-                      URLs <BsArrow90DegDown />
-                    </button>
-                    {showUrls && <SingleExchangeUrls data={data} />}
+                    <details className="group w-full justify-start flex items-center gap-1 ">
+                      <summary className="flex items-center gap-1 marker:content-none hover:cursor-pointer duration-200 transition-colors hover:text-scheme-red font-semibold w-full">
+                        URLs <MdArrowDropDown className="mt-0.5" />
+                      </summary>
+                      <article className="">
+                        <SingleExchangeUrls data={data} />
+                      </article>
+                    </details>
                   </div>
                   <div className="flex flex-col overflow-hidden">
-                    <button
-                      className="font-semibold hover:text-scheme-red duration-200 transition-colors flex items-center gap-1"
-                      onClick={handleContractsToggle}
-                    >
-                      Contracts <BsArrow90DegDown />
-                    </button>
-                    {showContracts && <SingleExchangeContracts data={data.contracts} />}
+                    <details className="group w-full justify-start flex items-center gap-1 ">
+                      <summary className="flex items-center gap-1 marker:content-none hover:cursor-pointer duration-200 transition-colors hover:text-scheme-red font-semibold w-full">
+                        Contracts <MdArrowDropDown className="mt-0.5" />
+                      </summary>
+                      <article className="">
+                        <SingleExchangeContracts data={data.contracts} />
+                      </article>
+                    </details>
                   </div>
                 </div>
               </div>

@@ -6,16 +6,10 @@ import {
   BsArrowDownCircle,
   BsArrowDownCircleFill,
 } from "react-icons/bs";
+import { MdArrowDropDown } from "react-icons/md";
 
 const TransactionHistory = ({ data }) => {
-  const [showTransfers, setShowTransfers] = useState(false);
-  const [showCurrency, setShowCurrency] = useState(false);
-  const showTransferDropDown = () => {
-    setShowTransfers((prev) => !prev);
-  };
-  const showCurrencyDropDown = () => {
-    setShowCurrency((prev) => !prev);
-  };
+
 
   let date = "";
 
@@ -74,26 +68,21 @@ const TransactionHistory = ({ data }) => {
                 : "Native Price Not Specified"}
             </span>
           </p>
-          <button
-            className="justify-start font-semibold  flex items-center gap-1 hover:text-scheme-red"
-            onClick={showTransferDropDown}
-          >
-            Transfers(ERC20)
-            <BsArrowDownCircleFill className="mt-0.5" />
-          </button>
-          {showTransfers ? (
-            <TransactionTransfers data={data.erc20_transfers} />
-          ) : (
-            <></>
-          )}
-          <button
-            className="justify-start font-semibold  flex items-center gap-1 hover:text-scheme-red"
-            onClick={showCurrencyDropDown}
-          >
-            Currency Transfer Data
-            <BsArrowDownCircleFill className="mt-0.5" />
-          </button>
-          {showCurrency ? <TransactionCurrency data={data.currency} /> : <></>}
+     
+            <details className="group w-full justify-start flex items-center gap-1 ">
+              <summary className="flex items-center gap-1 marker:content-none hover:cursor-pointer hover:text-scheme-red font-semibold w-full">Transfers(ERC20)<MdArrowDropDown className="mt-0.5"/></summary>
+              <article className="">
+                <TransactionTransfers data={data.erc20_transfers} />
+              </article>
+            </details>
+            <details className="group w-full justify-start flex items-center gap-1 ">
+              <summary className="flex items-center gap-1 marker:content-none hover:cursor-pointer hover:text-scheme-red font-semibold w-full">Currency Transfer Data<MdArrowDropDown className="mt-0.5"/></summary>
+              <article className="">
+              <TransactionCurrency data={data.currency} /> 
+              </article>
+            </details>
+         
+
         </>
       ) : (
         <p>Transaction Data Not Available</p>

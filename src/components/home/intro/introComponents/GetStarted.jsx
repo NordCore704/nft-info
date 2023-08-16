@@ -37,7 +37,7 @@ const GetStarted = ({timeline}) => {
     </p>
     <Link
       href={"/search"}
-      className={`text-center px-5 py-3 hover:bg-green-500 rounded-lg capitalize font-semibold bg-scheme-red transition-colors duration-300 opacity-0 -translate-y-10`} ref={buttonRef}
+      className={`text-center px-5 py-3 hover:bg-scheme-green hover:text-white rounded-lg capitalize font-semibold bg-green-500 transition-colors duration-300 opacity-0 -translate-y-10`} ref={buttonRef}
     >
       Get Started
     </Link>

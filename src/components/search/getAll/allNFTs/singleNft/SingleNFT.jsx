@@ -3,24 +3,11 @@ import { nftGirlFull } from "@/exports/image-exports";
 import { CurrentOwners, TransactionHistory } from "@/exports";
 import Image from "next/image";
 import Link from "next/link";
-import { BsFileArrowDown } from "react-icons/bs";
+import { MdArrowDropDown } from "react-icons/md";
 
 const SingleNFT = ({ data }) => {
-  const [showCurrentOwners, setShowCurrentOWners] = useState(false);
-  const [showTransactionHistory, setShowTransactionHistory] = useState(false);
-
-  const showDropDown = () => {
-    setShowCurrentOWners(prev => !prev)
-  }
-
-  const showTransactions = () => {
-    setShowTransactionHistory(prev => !prev)
-  }
-
-  const date = data.map((data) => (
-    data.minted_at
-  ))
-  const newDate = new Date(date.toString()).toDateString()
+  const date = data.map((data) => data.minted_at);
+  const newDate = new Date(date.toString()).toDateString();
   return (
     <div className="min-h-screen">
       <div className="mt-10 h-full">
@@ -75,27 +62,57 @@ const SingleNFT = ({ data }) => {
                 <span className="font-medium">{data.contract_address}</span>
               </p>
               <p className="font-semibold">
-                Minted At: <span className="font-medium">{data.minted_at ? newDate : 'Mint Date Not Provided'}</span>
+                Minted At:{" "}
+                <span className="font-medium">
+                  {data.minted_at ? newDate : "Mint Date Not Provided"}
+                </span>
               </p>
-              <p className="font-semibold">Created By: <span className="font-medium">{data.metadata !== null || undefined ? `${data.metadata.created_by ? data.metadata.created_by : 'Not Specified'}` : 'Not Specified'}</span></p>
+              <p className="font-semibold">
+                Created By:{" "}
+                <span className="font-medium">
+                  {data.metadata !== null || undefined
+                    ? `${
+                        data.metadata.created_by
+                          ? data.metadata.created_by
+                          : "Not Specified"
+                      }`
+                    : "Not Specified"}
+                </span>
+              </p>
             </div>
 
-            <button className="flex items-center gap-1 justify-start ml-5 cursor-pointer hover:text-scheme-red font-semibold duration-300 transition-colors" onClick={showDropDown}>
-              Current Owners
-              <BsFileArrowDown className="cursor-pointer" />
-            </button>
-            {showCurrentOwners ? <CurrentOwners data={data.current_owners} /> : (<></>) }
+            <details className="group">
+              <summary className="flex items-center gap-1 px-5 marker:content-none hover:cursor-pointer hover:text-scheme-red font-semibold">
+                Current Owners <MdArrowDropDown className="" />
+              </summary>
+              <article className="">
+                <CurrentOwners data={data.current_owners} />
+              </article>
+            </details>
 
-            <button className="flex gap-1 items-center font-semibold justify-start ml-5 hover:text-scheme-red duration-300 transition-colors" onClick={showTransactions}>Transaction History <BsFileArrowDown className="cursor-pointer" /></button>
+            <details className="group ">
+              <summary className="flex items-center gap-1 px-5 marker:content-none hover:cursor-pointer hover:text-scheme-red font-semibold">
+                Transaction History <MdArrowDropDown className="" />
+              </summary>
+              <article className="w-full">
+                <TransactionHistory data={data.recent_price} />
+              </article>
+            </details>
 
-            {showTransactionHistory ? <TransactionHistory data={data.recent_price} /> : (<></>) }
-            
             <div className="w-[80%] self-center h-20 sm:h-28 md:h-32 lg:h-32 bg-black rounded-full invert-white p-2 flex gap-2 sm:gap-20 md:gap-24 lg:gap-60 items-center">
               <div className="w-[15%] h-[80%] rounded-full bg-white invert-dark"></div>
               <div className="">
                 <p className="text-white invert-dark-text font-semibold text-lg sm:text-xl self-center">
                   {data.recent_price
-                    ? `${data.recent_price.price !== null ? data.recent_price.price : 'Price Currently Unavailable' }${data.recent_price.price_currency !== null ? data.recent_price.price_currency : '' }`
+                    ? `${
+                        data.recent_price.price !== null
+                          ? data.recent_price.price
+                          : "Price Currently Unavailable"
+                      }${
+                        data.recent_price.price_currency !== null
+                          ? data.recent_price.price_currency
+                          : ""
+                      }`
                     : "Price Currently Unavailable"}
                 </p>
               </div>

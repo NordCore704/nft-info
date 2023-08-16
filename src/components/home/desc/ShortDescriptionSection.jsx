@@ -86,10 +86,10 @@ const ShortDescriptionSection = () => {
     })
   })
   return (
-    <div className="relative flex flex-col md:flex-row lg:flex-row gap-3 p-5 overflow-hidden items-center justify-center rounded-md bg-gray-300" ref={scrollPinRef} >
+    <div className="relative flex flex-col md:flex-row lg:flex-row gap-3 p-5 overflow-hidden items-center justify-center rounded-md bg-gradient-to-br from-scheme-green-dark to-scheme-" ref={scrollPinRef} >
       {/* <video src="../"></video> */}
       <Image
-        src={nftWhite}
+        src={retroNft}
         alt="nft"
         className="md:w-[50%] lg:ml-4 self-center opacity-0 -translate-y-40 rounded-md"
         ref={imageRef}
@@ -114,7 +114,7 @@ const ShortDescriptionSection = () => {
         </p>
         <Link
           href={"/search"}
-          className="py-3 px-5 hover:bg-green-500 rounded-full text-center font-semibold bg-scheme-red duration-300 transition-colors opacity-0 translate-y-10 w-40" ref={buttonRef}
+          className="py-3 px-5 hover:bg-scheme-green hover:text-white rounded-full text-center font-semibold bg-green-500 duration-300 transition-colors opacity-0 translate-y-10 w-40" ref={buttonRef}
         >
           Search Now
         </Link>

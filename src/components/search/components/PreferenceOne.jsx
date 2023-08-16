@@ -43,7 +43,7 @@ const PreferenceOne = () => {
     },
   };
   return (
-    <div className="mt-8 w-full h-screen flex flex-col sm:flex-row md:flex-row lg:flex-row md:justify-between  sm:justify-between lg:justify-between gap-8">
+    <div className=" w-full h-screen  flex flex-col sm:flex-row md:flex-row lg:flex-row md:justify-between mb-10 sm:justify-between lg:justify-between gap-8">
       <motion.div
         className="bg-green-500 sm:w-[35%] lg:w-[30%] md:w-[30%] md:h-full sm:h-[90%] lg:h-full h-[50%]"
         variants={imageAnimationVariants}

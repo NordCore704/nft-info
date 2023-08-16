@@ -1,36 +1,31 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { apiHeaderState } from "@/context/apiHeaderContext";
+import { validateFormInputsTwo } from "@/utils/validateFormInput/validateFormInput";
 
-const GetAll = ({ }) => {
+const GetAll = ({}) => {
+  const router = useRouter();
+  const [ errors, setErrors ] = useState({})
+  const { headers, setHeaders } = apiHeaderState();
 
-  const {
-    headers, setHeaders,
-  } = apiHeaderState()
-  const changeChain = (e) => {
-      const value = e.target.value
-      setHeaders(prev => ({...prev, chain: value}))
-  }
-  const changeToken = (e) => {
-      const value = e.target.value
-      setHeaders(prev => ({...prev, token_type: value}))
-  }
-  const changeOwnersFilter = (e) => {
-      const value = e.target.value
-      setHeaders(prev => ({...prev, current_owners: value}))
-  }
-  const changeCurrentPriceFilter = (e) => {
-      const value = e.target.value
-      setHeaders(prev => ({...prev, current_price: value}))
-  }
-  
-  const changeResultSize = (e) => {
-      const value = e.target.value
-      setHeaders(prev => ({...prev, result_size: value}))
-  }
-  
+  const handleFormInputs = (e) => {
+    const { name, value } = e.target;
+    setHeaders((prev) => ({ ...prev, [name]: value }));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validateFormInputsTwo(headers);
+    if (Object.keys(validationErrors).length === 0) {
+      router.push("/search/getAll/allNFTs");
+      return;
+    } else {
+      setErrors(validationErrors);
+    }
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center gap-8 p-5">
+    <div className="flex flex-col items-center justify-center gap-8 p-5 h-screen">
       <p className="text-center text-4xl mt-5 font-semibold ">
         Please Select Your Search Parameters below:
       </p>
@@ -43,12 +38,14 @@ const GetAll = ({ }) => {
           id="chain"
           className="border border-black rounded-md p-2 mb-2 text-gray-500"
           required
-          onChange={(e) => changeChain(e)}
+          value={headers.chain}
+          onChange={handleFormInputs}
         >
           <option value="eth-main">eth-main</option>
           <option value="arbitrum-main">arbitrum-main</option>
           <option value="optimism-main">optimism-main</option>
           <option value="poly-main">poly-main</option>
+          <option value="bsc-main">bsc-main</option>
           <option value="eth-goerli">eth-goerli</option>
         </select>
 
@@ -58,8 +55,9 @@ const GetAll = ({ }) => {
         <select
           name="token_type"
           id="token_type"
+          value={headers.token_type}
           className="border border-black rounded-md p-2 mb-2 text-gray-500"
-          onChange={(e) => changeToken(e)}
+          onChange={handleFormInputs}
         >
           <option value=""></option>
           <option value="erc721">erc721</option>
@@ -72,8 +70,9 @@ const GetAll = ({ }) => {
         <select
           name="current_owners"
           id="current_owners"
+          value={headers.current_owners}
           className="border border-black rounded-md p-2 mb-2 text-gray-500"
-          onChange={(e) => changeOwnersFilter(e)}
+          onChange={handleFormInputs}
         >
           <option value="true">true</option>
           <option value="false">false</option>
@@ -85,34 +84,41 @@ const GetAll = ({ }) => {
         <select
           name="current_price"
           id="current_price"
+          value={headers.current_price}
           className="border border-black rounded-md p-2 mb-2 text-gray-500"
-          onChange={(e) => changeCurrentPriceFilter(e)}
+          onChange={handleFormInputs}
         >
           <option value="true">true</option>
           <option value="false">false</option>
         </select>
 
-        <label htmlFor="result_size" className="font-semibold invert-dark">
-          Result Size(1-100)
-        </label>
-        <select
-          name="result_size"
-          id="result_size"
-          className="border border-black rounded-md p-2 mb-2 text-gray-500"
-          onChange={(e) => changeResultSize(e)}
-        >
-          <option value="25">25</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select>
+        <div className="flex flex-col">
+          <label htmlFor="page_size" className="font-semibold invert-dark">
+            Result Size
+            <span className=" font-medium">(values between 1-100)</span>
+          </label>
+          <input
+            type="text"
+            name="page_size"
+            id="page_size"
+            value={headers.page_size}
+            onChange={handleFormInputs}
+            className={`border border-black rounded-md p-2 mb-2 text-gray-500 bg-transparent ${
+              errors.page_size ? "red-border" : ""
+            }`}
+            
+          />
+          <p className="text-sm invert-dark text-red-500">{errors.page_size}</p>
+        </div>
       </form>
 
-      <Link
-        href={`/search/getAll/allNFTs`}
-        className="p-2 text-center bg-green-500 w-32 rounded-full hover:bg-scheme-red duration-500 transition-colors font-semibold hover:text-white"
+      <button
+         onClick={(e) => handleSubmit(e)}
+        type="submit"
+        className="p-2 text-center bg-green-500 w-32 rounded-full hover:bg-scheme-green duration-500 transition-colors font-semibold hover:text-white"
       >
         See Results
-      </Link>
+      </button>
     </div>
   );
 };

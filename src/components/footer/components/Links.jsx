@@ -3,17 +3,17 @@ import Link from "next/link";
 
 const Links = () => {
   return (
-    <div className="flex md:gap-6 lg:gap-6 sm:gap-6 flex-col sm:flex-row md:flex-row lg:flex-row self-center ">
+    <div className="flex md:gap-6 lg:gap-6 sm:gap-6 flex-col sm:flex-row md:flex-row lg:flex-row self-center text-white ">
       <div className="flex gap-1 flex-col">
         <Link
           href={"/"}
-          className="font-semibold hover:text-scheme-red duration-300 transition-colors"
+          className="font-medium hover:text-green-500 duration-300 transition-colors"
         >
           Home
         </Link>
         <Link
           href={"/about"}
-          className="font-semibold hover:text-scheme-red duration-300 transition-colors"
+          className="font-medium hover:text-green-500 duration-300 transition-colors"
         >
           About
         </Link>
@@ -21,13 +21,13 @@ const Links = () => {
       <div className="flex gap-1 flex-col">
         <Link
           href={"/search"}
-          className="font-semibold hover:text-scheme-red duration-300 transition-colors"
+          className="font-medium hover:text-green-500 duration-300 transition-colors"
         >
           Search
         </Link>
         <Link
           href={"/contact"}
-          className="font-semibold hover:text-scheme-red duration-300 transition-colors"
+          className="font-medium hover:text-green-500 duration-300 transition-colors"
         >
           Contact
         </Link>

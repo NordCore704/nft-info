@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const Header = createContext();
 
@@ -8,7 +8,7 @@ const ApiContext = ({ children }) => {
     token_type: "",
     current_owners: true,
     current_price: true,
-    result_size: 25,
+    page_size: 25,
     cursor: "",
   });
   const [findHeaders, setFindHeaders] = useState({
@@ -16,19 +16,19 @@ const ApiContext = ({ children }) => {
     token_type: "",
     q: "Ape",
     filter: "token_name",
-    result_size: 25,
+    page_size: 25,
   });
   const [getOwnerDataHeaders, setGetOwnerDataHeaders] = useState({
     contract_address: "",
     token_id: "",
     chain: "eth-main",
-    page_size: "",
+    page_size: 25,
   });
   const [getExchangeDataHeaders, setGetExchangeDataHeaders] = useState({
 
     chain: "eth-main",
     exchange: 'opensea',
-    page_size: "",
+    page_size: 25,
   });
 
   return (

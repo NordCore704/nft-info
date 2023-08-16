@@ -6,7 +6,6 @@ import Image from "next/image";
 const OverlayBg = () => {
   return (
     <section className="flex flex-col items-center justify-center p-5">
-      {/* <video src="/nft-video.mp4" className='w-full h-full object-cover rounded-md absolute top-0 left-0 -z-10' autoPlay loop mute></video> */}
       <hr className="w-full mb-4 h-0.5 bg-gray-500" />
       <CategoriesSearch />
       <hr className="w-full mt-4 h-0.5 bg-gray-500" />
@@ -17,7 +16,7 @@ const OverlayBg = () => {
             src={retroNftFull}
             className="w-10 h-10 rounded-full object-cover"
           />
-          <article className="bg-gradient-to-b from-green-500 p-3 rounded-md border">
+          <article className="bg-scheme-green p-3 rounded-md border text-white">
             <p className="capitalize text-2xl font-semibold">
               A retro NFT or so?
             </p>
@@ -30,7 +29,7 @@ const OverlayBg = () => {
         </div>
         <div className="flex gap-3">
           <Image src={vrNft} alt="avatar" className="w-10 h-10 rounded-full" />
-          <article className="bg-gradient-to-b from-green-500 p-3 rounded-md border">
+          <article className="bg-scheme-green p-3 rounded-md border text-white">
             <p className="capitalize text-2xl font-semibold">The Cartoon Guy</p>
             <p className="">
               You may probably prefer NFTs with a cartoon-like nature, sure we
@@ -45,7 +44,7 @@ const OverlayBg = () => {
             src={nftPortrait}
             className="w-10 h-10 rounded-full"
           />
-          <article className="bg-gradient-to-b from-green-500 p-3 rounded-md border">
+          <article className="bg-scheme-green p-3 rounded-md border text-white">
             <p className="capitalize text-2xl font-semibold">
               Oh, you want a Portrait
             </p>

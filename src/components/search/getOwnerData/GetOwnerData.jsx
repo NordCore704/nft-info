@@ -1,66 +1,54 @@
 import React, { useState, useRef } from "react";
 import { useRouter } from "next/router";
 import { apiHeaderState } from "@/context/apiHeaderContext";
+import { validateFormInputs } from "@/utils/validateFormInput/validateFormInput";
 
 const GetOwnerData = () => {
-  const contractInputRef = useRef();
-  const tokenInputRef = useRef();
+
   const router = useRouter();
-  const [message, setMessage] = useState("");
-
-  const handleSubmit = () => {
-    const contractInputValue = contractInputRef.current.value;
-    const tokenInputRefValue = tokenInputRef.current.value;
-    if (contractInputValue === "" || tokenInputRefValue === "") {
-      setMessage("Valid Input Not Provided Here");
-      return;
-    }
-    router.push("/search/getOwnerData/allNftOwners");
-  };
-
+  const [errors, setErrors] = useState({});
   const { getOwnerDataHeaders, setGetOwnerDataHeaders } = apiHeaderState();
 
-  const changeChain = (e) => {
-    const value = e.target.value;
-    setGetOwnerDataHeaders((prev) => ({ ...prev, chain: value }));
+  const handleFormInputs = (e) => {
+    const { name, value } = e.target;
+    setGetOwnerDataHeaders((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleContractAddress = (e) => {
-    const value = e.target.value;
-    setGetOwnerDataHeaders((prev) => ({ ...prev, contract_address: value }));
-  };
-
-  const handleTokenId = (e) => {
-    const value = e.target.value;
-    setGetOwnerDataHeaders((prev) => ({ ...prev, token_id: value }));
-  };
-
-  const changeResultSize = (e) => {
-    const value = e.target.value;
-    setGetOwnerDataHeaders((prev) => ({ ...prev, page_size: value }));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validateFormInputs(getOwnerDataHeaders);
+    if (Object.keys(validationErrors).length === 0) {
+      router.push("/search/getOwnerData/allNftOwners");
+      return;
+    } else {
+      setErrors(validationErrors);
+    }
   };
 
   return (
-    <div className="flex flex-col gap-8 items-center p-5 justify-center h-full w-full">
+    <div className="flex flex-col gap-8 items-center p-5 justify-center h-screen w-full mb-8">
       <p className="text-3xl font-semibold text-center">
         Select Your Search Preferences Below:
       </p>
       <form action="" className="flex flex-col gap-4 w-[70%]">
         <div className="flex flex-col">
-          <label htmlFor="contract_address" className="font-semibold mb-2 invert-dark">
+          <label
+            htmlFor="contract_address"
+            className="font-semibold mb-2 invert-dark"
+          >
             Contract Address
           </label>
           <input
             type="text"
             name="contract_address"
             id="contract_address"
-            ref={contractInputRef}
-            onChange={(e) => handleContractAddress(e)}
-            className={`border border-black rounded-md p-2 mb-2 text-gray-500 bg-transparent ${
-              message !== "" ? "red-border" : ""
+            value={getOwnerDataHeaders.contract_address}
+            onChange={handleFormInputs}
+            className={`border border-black rounded-md p-2 text-gray-500 bg-transparent ${
+              errors.contract_address ? "red-border" : ""
             }`}
           />
-          <p className="text-sm invert-dark">{message}</p>
+          <p className="text-sm invert-dark text-red-500">{errors.contract_address}</p>
         </div>
 
         <div className="flex flex-col">
@@ -70,15 +58,15 @@ const GetOwnerData = () => {
           </label>
           <input
             type="text"
-            ref={tokenInputRef}
-            onChange={(e) => handleTokenId(e)}
-            name="contract_address"
-            id="contract_address"
-            className={`border border-black rounded-md p-2 mb-2 text-gray-500 bg-transparent ${
-              message !== "" ? "red-border" : ""
+            onChange={handleFormInputs}
+            value={getOwnerDataHeaders.token_id}
+            name="token_id"
+            id="token_id"
+            className={`border border-black rounded-md p-2 text-gray-500 bg-transparent ${
+              errors.token_id ? "red-border" : ""
             }`}
           />
-          <p className="text-sm invert-dark">{message}</p>
+          <p className="text-sm invert-dark text-red-500">{errors.token_id}</p>
         </div>
 
         <label htmlFor="chain" className="font-semibold invert-dark">
@@ -89,34 +77,40 @@ const GetOwnerData = () => {
           id="chain"
           className="border border-black rounded-md p-2 mb-2 text-gray-500"
           required
-          onChange={(e) => changeChain(e)}
+          value={getOwnerDataHeaders.chain}
+          onChange={handleFormInputs}
         >
           <option value="eth-main">eth-main</option>
           <option value="arbitrum-main">arbitrum-main</option>
           <option value="optimism-main">optimism-main</option>
           <option value="poly-main">poly-main</option>
+          <option value="bsc-main">bsc-main</option>
           <option value="eth-goerli">eth-goerli</option>
         </select>
 
-        <label htmlFor="page_size" className="font-semibold invert-dark">
-          Result Size(1-100)
-        </label>
-        <select
-          name="page_size"
-          id="page_size"
-          className="border border-black rounded-md p-2 mb-2 text-gray-500"
-          onChange={(e) => changeResultSize(e)}
-        >
-          <option value="25">25</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select>
+        <div className="flex flex-col">
+          <label htmlFor="page_size" className="font-semibold invert-dark">
+            Result Size{" "}
+            <span className=" font-medium">(values between 1-100)</span>
+          </label>
+          <input
+            type="text"
+            name="page_size"
+            id="page_size"
+            value={getOwnerDataHeaders.page_size}
+            onChange={handleFormInputs}
+            className={`border border-black rounded-md p-2 text-gray-500 bg-transparent ${
+              errors.page_size ? "red-border" : ""
+            }`}
+          />
+          <p className="text-sm invert-dark text-red-500">{errors.page_size}</p>
+        </div>
       </form>
 
       <button
         type="submit"
-        onClick={handleSubmit}
-        className="p-2 text-center bg-green-500 w-32 rounded-full hover:bg-scheme-red duration-500 transition-colors font-semibold hover:text-white"
+        onClick={(e) => handleSubmit(e)}
+        className="p-2 text-center bg-green-500 w-32 rounded-full hover:bg-scheme-green duration-500 transition-colors font-semibold hover:text-white"
       >
         See Results
       </button>

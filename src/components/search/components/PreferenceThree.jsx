@@ -5,7 +5,7 @@ import { astroArt, astroBit, astroNFT } from "@/exports/image-exports";
 
 const PreferenceThree = () => {
   return (
-    <div className="flex h-screen gap-3 flex-col sm:flex-row md:flex-row lg:flex-row overflow-hidden">
+    <div className="flex h-screen gap-3 flex-col sm:flex-row md:flex-row lg:flex-row mb-14 sm:overflow-hidden">
       <div className="w-full sm:w-[30%] md:w-[30%] lg:w-[30%] flex items-center justify-center">
       <div className="flex sm:flex-col md:flex-col lg:flex-col flex-row gap-2 items-center justify-center">
       <div className="w-24 h-0.5 rotate-90 mb-8 sm:mb-12 md:mb-12 lg:mb-12 bg-gray-400"/>
@@ -34,7 +34,7 @@ const PreferenceThree = () => {
           className="object-cover sm:h-[35%] w-full"
         />
       </div>
-      <div className="sm:w-[45%] md:w-[45%] lg:w-[45%] h-full flex flex-col items-center justify-center gap-4">
+      <div className="sm:w-[45%] md:w-[45%] lg:w-[45%] h-full flex flex-col items-center self-center justify-center gap-4">
         <p className="text-4xl font-semibold text-center capitalize">
           Get Ownership data
         </p>
