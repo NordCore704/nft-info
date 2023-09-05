@@ -1,6 +1,7 @@
 import SharedLayout from "@/components/shared/SharedLayout";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
+import Headers from "@/components/seoHeaders/Headers";
 import IntroSection from "@/components/home/intro/IntroSection";
 NftStats;
 import ShortDescriptionSection from "@/components/home/desc/ShortDescriptionSection";
@@ -50,6 +51,7 @@ export {
   SharedLayout,
   Navbar,
   Footer,
+  Headers,
   IntroSection,
   NftStats,
   NftDisplay,

@@ -31,3 +31,19 @@ export const validateFormInputsTwo = (inputValues) => {
     }
     return errors
 }
+export const validateFormInputsThree = (inputValues) => {
+    const errors = {}
+    if (!inputValues.q) {
+        errors.q = 'Collection Name not provided'
+
+    }
+    if (!inputValues.page_size) {
+        errors.page_size = 'Result size not provided'
+
+    } else if(inputValues.page_size > 100){
+        errors.page_size = 'Please enter a valid result size ranging from 1-100'
+    } else if(inputValues.page_size < 1){
+        errors.page_size = 'Please enter a valid result size ranging from 1-100'
+    }
+    return errors
+}

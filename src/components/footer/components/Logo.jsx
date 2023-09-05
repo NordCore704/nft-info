@@ -4,12 +4,12 @@ import Image from "next/image";
 
 const Logo = () => {
   return (
-    <div className="">
-      <div className="flex gap-2 items-center text-white ">
+    <div className="sm:self-start">
+      <div className="flex gap-1 items-center justify-center sm:justify-start text-white">
         <Image src={logo} alt="logo" className="w-10 invert-none" />
         <p className="font-semibold">NFTInfo</p>
       </div>
-      <p className="text-white">©2023 NFTInfo</p>
+      <p className="text-white text-sm">©2023 NFTInfo, All Rights Reserved.</p>
     </div>
   );
 };

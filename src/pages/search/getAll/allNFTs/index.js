@@ -1,33 +1,42 @@
-import React from "react";
-import { AllNfts } from "@/exports";
+import React, { useEffect } from "react";
+import { AllNfts, Headers } from "@/exports";
 import { apiHeaderState } from "@/context/apiHeaderContext";
-import { getAllNFTs } from "@/utils/getAll/getAllAPI";
+import GetAllAPI from "@/utils/getAll/GetAllAPI";
+import { useRouter } from "next/router";
 
-const index = ({ data, id }) => {
+const index = ({data, id}) => {
+  // const router = useRouter()
+  // const { data, id } = router.query
+
   return (
     <div>
-      <AllNfts data={data} chain={id} />
+      <Headers />
+      <AllNfts data={data} chain={id}/>
     </div>
   );
 };
 
 export default index;
 
-// // export async function getStaticProps() {
+// export async function getStaticProps() {
 // const { headers, setHeaders } = apiHeaderState()
-// //   const response = await fetch("https://fakestoreapi.com/products/categories" + new URLSearchParams({
-// ...headers
+//   const response = await fetch("https://api.blockspan.com/v1/nfts" + new URLSearchParams({
+//     chain: headers.chain,
+//     token_type: headers.token_type,
+//     include_current_owners: `${headers.current_owners}`,
+//     include_current_price: `${headers.current_price}`,
+//     page_size: parseInt(headers.page_size),
 // }), {
 // headers: {
-// X-API-KEY : 'q72R8FaDM0YEDQ0ZVWGAbNxwfXecUbjJ'
+// "X-API-KEY" : 'q72R8FaDM0YEDQ0ZVWGAbNxwfXecUbjJ',
 // }
 // })
-// //   const data = await response.json();
+//   const data = await response.json();
 
-// //   return {
-// //     props: { data: data },
-// //   };
-// // }
+//   return {
+//     props: { data: data },
+//   };
+// }
 
 export async function getStaticProps(){
 
@@ -41,9 +50,13 @@ export async function getStaticProps(){
 
 // export async function getStaticProps() {
 //   try {
-//     const nfts = await getAllNFTs();
+//     const nfts = await GetAllAPI();
+//     const { results } = nfts;
+//     const data = results.map((data) => data);
+//     const { chain } = nfts;
+//     console.log(nfts);
 //     return {
-//       props: { nfts },
+//       props: { data, id: chain },
 //       revalidate: 3600, // Revalidate every one hour, read more about revalidation in the official nextjs docs
 //     };
 //   } catch (error) {
@@ -51,7 +64,7 @@ export async function getStaticProps(){
 //       props: {
 //         nfts: [],
 //       },
-//       revalidate: 3600
+//       revalidate: 3600,
 //     };
 //   }
 // }

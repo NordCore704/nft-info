@@ -4,14 +4,16 @@ import { apiHeaderState } from "@/context/apiHeaderContext";
 import { validateFormInputs } from "@/utils/validateFormInput/validateFormInput";
 
 const GetOwnerData = () => {
-
   const router = useRouter();
   const [errors, setErrors] = useState({});
   const { getOwnerDataHeaders, setGetOwnerDataHeaders } = apiHeaderState();
 
   const handleFormInputs = (e) => {
     const { name, value } = e.target;
-    setGetOwnerDataHeaders((prev) => ({ ...prev, [name]: value }));
+
+    const newValue =
+      name === "page_size" && value !== "" ? parseFloat(value) : value;
+    setGetOwnerDataHeaders((prev) => ({ ...prev, [name]: newValue }));
   };
 
   const handleSubmit = (e) => {
@@ -48,7 +50,9 @@ const GetOwnerData = () => {
               errors.contract_address ? "red-border" : ""
             }`}
           />
-          <p className="text-sm invert-dark text-red-500">{errors.contract_address}</p>
+          <p className="text-sm invert-dark text-red-500">
+            {errors.contract_address}
+          </p>
         </div>
 
         <div className="flex flex-col">

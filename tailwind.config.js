@@ -14,8 +14,8 @@ module.exports = {
       },
       colors: {
         "scheme-dark-blue": '#0c0a3e',
-        "scheme-green": '#00a38c',
-        "scheme-green-dark": '#009ba0',
+        "scheme-green": '#00ae7c',
+        "scheme-green-dark": '#00968b',
         "scheme-dark": '#2f4858',
         "scheme-purple": "#7b1e7a",
         "scheme-maroon": "#b33f62",

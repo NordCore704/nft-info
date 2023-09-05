@@ -8,18 +8,18 @@ import {
 
 const Socials = () => {
   return (
-    <div className="flex gap-2 lg:gap-4 self-end justify-self-end text-white">
-      <a href="">
-        <BsInstagram className="font-semibold hover:text-green-500 duration-300 transition-colors" />
+    <div className="flex gap-2 lg:gap-4 self-center sm:self-end justify-self-center sm:justify-self-end  text-white">
+      <a href="" className="rounded-full invert-dark bg-green-500 p-3">
+        <BsInstagram className="font-semibold hover:text-scheme-green-dark duration-300 transition-colors" />
       </a>
-      <a href="">
-        <BsTwitter className="font-semibold hover:text-green-500 duration-300 transition-colors" />
+      <a href="" className="rounded-full invert-dark bg-green-500 p-3">
+        <BsTwitter className="font-semibold hover:text-scheme-green-dark duration-300 transition-colors" />
       </a>
-      <a href="">
-        <BsLinkedin className="font-semibold hover:text-green-500 duration-300 transition-colors" />
+      <a href="" className="rounded-full invert-dark bg-green-500 p-3">
+        <BsLinkedin className="font-semibold hover:text-scheme-green-dark duration-300 transition-colors" />
       </a>
-      <a href="">
-        <BsEnvelope className="font-semibold hover:text-green-500 duration-300 transition-colors" />
+      <a href="" className="rounded-full invert-dark bg-green-500 p-3">
+        <BsEnvelope className="font-semibold hover:text-scheme-green-dark duration-300 transition-colors" />
       </a>
     </div>
   );

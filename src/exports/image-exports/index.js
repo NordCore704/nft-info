@@ -1,6 +1,7 @@
 import closeburger from "../../images/icon-close.svg";
 import hamburger from "../../images/icon-hamburger.svg";
-import logo from "../../images/card.png";
+import logo from "../../images/card-green.png";
+import logoGreen from '@/images/card.png'
 import displayNFT from "../../images/nft-3d.png";
 import nftGirl from "../../images/nft-girl-cut.png";
 import nftGirlFull from "../../images/nftGirl.jpeg";
@@ -30,6 +31,7 @@ export {
   closeburger,
   hamburger,
   logo,
+  logoGreen,
   nftGirl,
   nftGirlFull,
   nftPortrait,

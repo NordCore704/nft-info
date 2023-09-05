@@ -1,15 +1,64 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { sandStorm } from "@/exports/image-exports";
+import { motion, useAnimation } from 'framer-motion'
+import { useInView } from "react-intersection-observer";
 import Link from "next/link";
 
 const PreferenceFour = () => {
+  const [ ref, inView ] = useInView({
+    threshold: 0.6,
+  })
+  const animation = useAnimation()
+
+  const scrollPopVariant = {
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        ease: "easeInOut",
+        duration: 1,
+        type: "spring",
+      }
+    },
+    hidden: {
+      x: 150,
+      opacity: 0,
+      zIndex: 2,
+    }
+  }
+  const scrollVariant = {
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        ease: "easeInOut",
+        duration: 1.8,
+        type: "spring",
+      }
+    },
+    hidden: {
+      x: -150,
+      opacity: 0,
+    }
+  }
+
+  useEffect(() => {
+   
+    if(inView){
+      animation.start("visible")
+    } else {
+      animation.start("hidden")
+    }
+
+  }, [inView])
+
   return (
-    <div className="min-h-screen flex sm:flex-row md:flex-row lg:flex-row gap-5 flex-col overflow-hidden p-4">
-      <div className=" w-full sm:w-[50%] md:w-[50%] lg:w-[50%]">
+    <div className="min-h-screen flex sm:flex-row md:flex-row lg:flex-row gap-5 flex-col overflow-hidden p-4" ref={ref}>
+      <motion.div className=" w-full sm:w-[50%] md:w-[50%] lg:w-[50%]" initial='hidden' animate={animation} variants={scrollPopVariant}>
         <Image src={sandStorm} className="object-cover w-full h-full" alt="sandstorm"/>
-      </div>
-      <div className="flex flex-col w-full sm:w-[50%] md:w-[50%] lg:w-[50%] gap-5">
+      </motion.div >
+      <motion.div className="flex flex-col w-full sm:w-[50%] md:w-[50%] lg:w-[50%] gap-5" ref={ref} variants={scrollVariant} initial='hidden' animate={animation}>
         <div className="flex flex-col gap-3">
           <div className="rounded-full w-8 h-8 bg-black invert-dark"></div>
           <hr className="rounded-md h-1 w-32 bg-gray-400" />
@@ -25,7 +74,7 @@ const PreferenceFour = () => {
         <p className="text-[12rem] font-bold self-end sm:self-start ">4</p>
        
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

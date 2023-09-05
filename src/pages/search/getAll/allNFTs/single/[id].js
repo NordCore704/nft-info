@@ -1,9 +1,10 @@
 import React from 'react'
-import { SingleNFT } from '@/exports'
+import { SingleNFT, Headers } from '@/exports'
 
 const getAllDynamic = ({data}) => {
   return (
     <section className='min-h-screen'>
+      <Headers />
       <SingleNFT data={data}/>
     </section>
   )

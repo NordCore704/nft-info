@@ -1,9 +1,10 @@
 import React from 'react'
-import { GetExchangeData } from '@/exports'
+import { GetExchangeData, Headers } from '@/exports'
 
 const index = () => {
   return (
     <section className='min-h-screen'>
+      <Headers />
         <GetExchangeData />
     </section>
   )

@@ -2,28 +2,32 @@ import React, { useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { apiHeaderState } from "@/context/apiHeaderContext";
-
+import { validateFormInputsThree } from "@/utils/validateFormInput/validateFormInput";
 
 const FindNfts = () => {
   const collectionInputRef = useRef();
   const router = useRouter();
-  const [message, setMessage] = useState("");
-  const handleSubmit = (e) => {
-
-    const collectionInputValue = collectionInputRef.current.value;
-    if (collectionInputValue === "") {
-      setMessage("Valid Input Not Provided Here");
-      return;
-    }
-    router.push("/search/find/allNfts");
-  };
   const { findHeaders, setFindHeaders } = apiHeaderState();
 
+  const [errors, setErrors] = useState({});
+  
   const handleFormInputs = (e) => {
     const { name, value } = e.target;
-    setFindHeaders((prev) => ({ ...prev, [name]: value }));
-  }
-
+    
+    const newValue =
+      name === "page_size" && value !== "" ? parseInt(value) : value;
+    setFindHeaders((prev) => ({ ...prev, [name]: newValue }));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validateFormInputsThree(findHeaders);
+    if (Object.keys(validationErrors).length === 0) {
+      router.push("/search/getOwnerData/allNftOwners");
+      return;
+    } else {
+      setErrors(validationErrors);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-8 items-center p-5 justify-center h-screen w-full">
@@ -75,13 +79,15 @@ const FindNfts = () => {
             id="q"
             value={findHeaders.q}
             className={`border border-black rounded-md p-2 mb-2 text-gray-500 bg-transparent ${
-              message !== "" ? "red-border" : ""
+              errors.q ? "red-border" : ""
             }`}
             onChange={handleFormInputs}
             required
             ref={collectionInputRef}
           />
-          <p className="text-sm transition-opacity duration-300 invert-dark">{message}</p>
+          <p className="text-sm transition-opacity duration-300 invert-dark text-red-500">
+            {errors.q}
+          </p>
         </div>
 
         <label htmlFor="filter" className="font-semibold invert-dark">
@@ -102,20 +108,23 @@ const FindNfts = () => {
           <option value="all">all</option>
         </select>
 
-        <label htmlFor="page_size" className="font-semibold invert-dark">
-          Result Size(1-100)
-        </label>
-        <select
-          name="page_size"
-          id="page_size"
-          value={findHeaders.result_size}
-          className="border border-black rounded-md p-2 mb-2 text-gray-500"
-          onChange={handleFormInputs}
-        >
-          <option value="25">25</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select>
+        <div className="flex flex-col">
+          <label htmlFor="page_size" className="font-semibold invert-dark">
+            Result Size{" "}
+            <span className=" font-medium">(values between 1-100)</span>
+          </label>
+          <input
+            type="text"
+            name="page_size"
+            id="page_size"
+            value={findHeaders.page_size}
+            onChange={handleFormInputs}
+            className={`border border-black rounded-md p-2 text-gray-500 bg-transparent ${
+              errors.page_size ? "red-border" : ""
+            }`}
+          />
+          <p className="text-sm invert-dark text-red-500">{errors.page_size}</p>
+        </div>
       </form>
       <button
         type="submit"

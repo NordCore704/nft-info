@@ -1,9 +1,10 @@
 import React from 'react'
-import { GetOwnerData } from '@/exports'
+import { GetOwnerData, Headers } from '@/exports'
 
 const index = () => {
   return (
     <section className='min-h-screen'>
+      <Headers />
       <GetOwnerData />
     </section>
   )

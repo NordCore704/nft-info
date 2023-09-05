@@ -1,10 +1,11 @@
 import React from 'react'
-import { AllNftFind } from '@/exports'
-import { findAllNFTs } from '@/utils/find/findAPI'
+import { AllNftFind, Headers } from '@/exports'
+import { findAllNFTs } from '@/utils/find/FindAPI'
 
 const index = ({ data }) => {
   return (
     <section className='w-full min-h-screen'>
+      <Headers />
       <AllNftFind data={data}/>
     </section>
   )

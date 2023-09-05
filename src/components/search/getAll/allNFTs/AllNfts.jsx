@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { nftGirl } from "@/exports/image-exports";
 
+
 const AllNfts = ({ chain, data }) => {
+
+  console.log(data);
   const [currentPage, setCurrentPage] = useState(1);
   const nftsPerPage = 5;
   const lastIndex = currentPage * nftsPerPage;
@@ -37,7 +41,11 @@ const AllNfts = ({ chain, data }) => {
       </p>
       <div className="paginator flex flex-col gap-4">
         {nfts.map((data, index) => (
-          <div
+          <motion.div
+          initial={{opacity: 0, y: 20}}
+          animate={{opacity: 1, y: 0}}
+          exit={{opacity: 0, y: 20}}
+          transition={{delay: 0.2 * index}}
             className="p-3 rounded-md bg-gray-400 flex flex-col gap-1"
             key={index}
           >
@@ -82,7 +90,7 @@ const AllNfts = ({ chain, data }) => {
                 See More
               </Link>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
       <div className="flex border rounded-md mt-5 border-black h-14 gap-1 p-2 items-center justify-center">

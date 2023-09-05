@@ -1,21 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { apiHeaderState } from "@/context/apiHeaderContext";
+import axios from "axios";
 import { useRouter } from "next/router";
-import { validateFormInputs } from "@/utils/validateFormInput/validateFormInput";
+import { validateFormInputsTwo } from "@/utils/validateFormInput/validateFormInput";
 
 const GetExchangeData = () => {
   const router = useRouter();
+  const API_URL = "https://api.blockspan.com/v1/exchanges/collections";
+  const [errors, setErrors] = useState({});
   const { getExchangeDataHeaders, setGetExchangeDataHeaders } =
     apiHeaderState();
-    const handleFormInputs = (e) => {
-      const {name, value} = e.target;
-      setGetExchangeDataHeaders((prev) => ({ ...prev, [name]: value }));
-    }
+  const handleFormInputs = (e) => {
+    const { name, value } = e.target;
 
- 
-  const handleSubmit = () => {
-    router.push("/search/getExchangeData/allNFTs");
+    const newValue =
+      name === "page_size" && value !== "" ? parseInt(value) : value;
+
+    setGetExchangeDataHeaders((prev) => ({ ...prev, [name]: newValue }));
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validateFormInputsTwo(getExchangeDataHeaders);
+    if (Object.keys(validationErrors).length === 0) {
+      router.push("/search/getExchangeData/allNFTs");
+      return;
+    } else {
+      setErrors(validationErrors);
+    }
+  };
+
+  console.log(getExchangeDataHeaders);
 
   return (
     <div className="flex flex-col gap-8 items-center p-5 justify-center h-screen">
@@ -33,7 +48,6 @@ const GetExchangeData = () => {
           className="border border-black rounded-md p-2 mb-2 text-gray-500"
           required
           onChange={handleFormInputs}
-
         >
           <option value="eth-main">eth-main</option>
           <option value="arbitrum-main">arbitrum-main</option>
@@ -59,20 +73,23 @@ const GetExchangeData = () => {
           </option>
         </select>
 
-        <label htmlFor="page_size" className="font-semibold invert-dark">
-          Result Size(1-100)
-        </label>
-        <select
-          name="page_size"
-          id="page_size"
-          value={getExchangeDataHeaders.page_size}
-          className="border border-black rounded-md p-2 mb-2 text-gray-500"
-          onChange={handleFormInputs}
-        >
-          <option value="25">25</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select>
+        <div className="flex flex-col">
+          <label htmlFor="page_size" className="font-semibold invert-dark">
+            Result Size{" "}
+            <span className=" font-medium">(values between 1-100)</span>
+          </label>
+          <input
+            type="text"
+            name="page_size"
+            id="page_size"
+            value={getExchangeDataHeaders.page_size}
+            onChange={handleFormInputs}
+            className={`border border-black rounded-md p-2 text-gray-500 bg-transparent ${
+              errors.page_size ? "red-border" : ""
+            }`}
+          />
+          <p className="text-sm invert-dark text-red-500">{errors.page_size}</p>
+        </div>
       </form>
 
       <button

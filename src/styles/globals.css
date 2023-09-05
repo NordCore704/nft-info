@@ -58,11 +58,11 @@ body {
   background-color: hsl(142, 71%, 45%);
 }
 .sliding {
-  animation: sliding 10s linear infinite;
+  animation: sliding 12s linear infinite;
   transition: ease-in-out;
 }
 .sliding2 {
-  animation: sliding2 8s linear infinite;
+  animation: sliding2 10s linear infinite;
   transition: ease-in-out;
 }
 @keyframes sliding {

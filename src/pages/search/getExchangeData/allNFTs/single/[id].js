@@ -1,9 +1,10 @@
 import React from "react";
-import { SingleExchangeNFT } from "@/exports";
+import { SingleExchangeNFT, Headers } from "@/exports";
 
 const displaySingleNFT = ({ data }) => {
   return (
     <section className="min-h-screen">
+      <Headers />
       <SingleExchangeNFT data={data} />
     </section>
   )

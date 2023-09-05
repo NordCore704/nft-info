@@ -1,9 +1,10 @@
 import React from 'react'
-import { SingleFind } from '@/exports'
+import { SingleFind, Headers } from '@/exports'
 
 const singleFindNFT = ({ data }) => {
   return (
     <section className='min-h-screen'>
+      <Headers />
       <SingleFind data={data}/>
     </section>
   )

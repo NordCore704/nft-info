@@ -52,6 +52,7 @@ const PreferenceOne = () => {
           ease: "easeInOut",
           duration: 0.9,
           type: "spring",
+          delay: .5,
         }}
         animate="animate"
       >

@@ -5,7 +5,7 @@ const Header = createContext();
 const ApiContext = ({ children }) => {
   const [headers, setHeaders] = useState({
     chain: "eth-main",
-    token_type: "",
+    token_type: "erc721",
     current_owners: true,
     current_price: true,
     page_size: 25,

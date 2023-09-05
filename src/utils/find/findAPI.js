@@ -1,12 +1,11 @@
 import axios from 'axios'
 import { apiHeaderState } from "@/context/apiHeaderContext";
-
 import { API_KEY } from "../../../config";
 
 const API_URL = "https://api.blockspan.com/v1/nfts/search";
 
-export async function findAllNFTs() {
-  const { findHeaders, } = apiHeaderState();
+async function FindAllNFTs() {
+  const { findHeaders } = apiHeaderState();
   try {
     const response = await axios.get(API_URL, {
       params: {
@@ -17,7 +16,7 @@ export async function findAllNFTs() {
         page_size: parseInt(findHeaders.page_size),
       },
       headers: {
-        "x-api-key": `Bearer ${API_KEY}`,
+        "x-api-key": `${API_KEY}`,
       },
     });
     return response.data;
@@ -25,3 +24,5 @@ export async function findAllNFTs() {
     throw new Error("Failed to fetch NFTs");
   }
 }
+
+export default FindAllNFTs

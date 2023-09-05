@@ -3,33 +3,62 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { apiHeaderState } from "@/context/apiHeaderContext";
 import { validateFormInputsTwo } from "@/utils/validateFormInput/validateFormInput";
+import GetAllAPI from "@/utils/getAll/GetAllAPI";
 
 const GetAll = ({}) => {
   const router = useRouter();
-  const [ errors, setErrors ] = useState({})
+  const [errors, setErrors] = useState({});
+  const [fetchedData, setFetchedData] = useState(null);
   const { headers, setHeaders } = apiHeaderState();
 
   const handleFormInputs = (e) => {
     const { name, value } = e.target;
-    setHeaders((prev) => ({ ...prev, [name]: value }));
+    const newValue =
+      name === "page_size" && value !== "" ? parseInt(value) : value;
+    setHeaders((prev) => ({ ...prev, [name]: newValue }));
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
+
+  const handleSubmit = async () => {
+
     const validationErrors = validateFormInputsTwo(headers);
     if (Object.keys(validationErrors).length === 0) {
-      router.push("/search/getAll/allNFTs");
+      try {
+        const nfts = await GetAllAPI(headers);
+        const { results } = nfts;
+        const data = results.map((data) => data);
+
+        const { chain } = nfts;
+        console.log(results);
+        console.log(nfts);
+        const response = { data, id: chain };
+        setFetchedData(response);
+        sendToResultsPage();
+      } catch (error) {}
+     
       return;
     } else {
       setErrors(validationErrors);
     }
   };
+  
+  const handleRefresh = (e) => {
+    e.preventDefault();
+  };
+  const sendToResultsPage = (data, id) => {
+    router.push({ pathname: "/search/getAll/allNFTs", query: { data, id } });
+  };
 
+  console.log(headers);
   return (
-    <div className="flex flex-col items-center justify-center gap-8 p-5 h-screen">
+    <div className="flex flex-col items-center justify-center gap-8 p-5 min-h-screen mb-14">
       <p className="text-center text-4xl mt-5 font-semibold ">
         Please Select Your Search Parameters below:
       </p>
-      <form action="" className="w-[70%] flex flex-col gap-3">
+      <form
+        action=""
+        className="w-[70%] flex flex-col gap-3"
+        onSubmit={handleRefresh}
+      >
         <label htmlFor="chain" className="font-semibold invert-dark">
           Select A Blockchain
         </label>
@@ -106,14 +135,13 @@ const GetAll = ({}) => {
             className={`border border-black rounded-md p-2 mb-2 text-gray-500 bg-transparent ${
               errors.page_size ? "red-border" : ""
             }`}
-            
           />
           <p className="text-sm invert-dark text-red-500">{errors.page_size}</p>
         </div>
       </form>
 
       <button
-         onClick={(e) => handleSubmit(e)}
+        onClick={(e) => handleSubmit(e)}
         type="submit"
         className="p-2 text-center bg-green-500 w-32 rounded-full hover:bg-scheme-green duration-500 transition-colors font-semibold hover:text-white"
       >
