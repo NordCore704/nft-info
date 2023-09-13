@@ -4,14 +4,16 @@ import { apiHeaderState } from "@/context/apiHeaderContext";
 import GetAllAPI from "@/utils/getAll/GetAllAPI";
 import { useRouter } from "next/router";
 
-const index = ({data, id}) => {
-  // const router = useRouter()
-  // const { data, id } = router.query
+const index = ({}) => {
+  const router = useRouter()
+  const { data, id } = router.query
+
+  console.log(JSON.parse(data));
 
   return (
     <div>
       <Headers />
-      <AllNfts data={data} chain={id}/>
+      <AllNfts data={JSON.parse(data)} chain={id}/>
     </div>
   );
 };
@@ -38,15 +40,15 @@ export default index;
 //   };
 // }
 
-export async function getStaticProps(){
+// export async function getStaticProps(){
 
-    const {results} = await import("../../../../constants/nftsResults.json");
-    const data = results.map((data) => data)
-    const { chain } = await import("../../../../constants/nftsResults.json");
-      return {
-        props: { data, id: chain }
-      }
-    }
+//     const {results} = await import("../../../../constants/nftsResults.json");
+//     const data = results.map((data) => data)
+//     const { chain } = await import("../../../../constants/nftsResults.json");
+//       return {
+//         props: { data, id: chain }
+//       }
+//     }
 
 // export async function getStaticProps() {
 //   try {

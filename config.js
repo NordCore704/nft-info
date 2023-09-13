@@ -1,1 +1,2 @@
-export const API_KEY = process.env.API_KEY
+require('dotenv').config()
+export const API_KEY = process.env.NEXT_PUBLIC_API_KEY

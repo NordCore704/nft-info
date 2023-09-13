@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { apiHeaderState } from "@/context/apiHeaderContext";
 import { validateFormInputsThree } from "@/utils/validateFormInput/validateFormInput";
+import { FindAPI } from '@/utils/find/FindAPI';
 
 const FindNfts = () => {
   const collectionInputRef = useRef();
@@ -18,16 +19,34 @@ const FindNfts = () => {
       name === "page_size" && value !== "" ? parseInt(value) : value;
     setFindHeaders((prev) => ({ ...prev, [name]: newValue }));
   };
-  const handleSubmit = (e) => {
+
+  const sendToResultsPage = (data, id) => {
+
+    router.push({ pathname: "/search/getOwnerData/allNftOwners", query: { data: JSON.stringify(data), id } });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validateFormInputsThree(findHeaders);
     if (Object.keys(validationErrors).length === 0) {
-      router.push("/search/getOwnerData/allNftOwners");
+      try {
+        const nfts = await FindAPI(findHeaders)
+        const { results } = nfts;
+        const data = results.map((data) => data);
+        const { chain } = nfts;
+        const response = { data, id: chain}
+        sendToResultsPage(response.data, response.id)
+        
+      } catch (error) {
+        console.log(error, 'Fetching Failed');
+      }
+      // router.push("/search/getOwnerData/allNftOwners");
       return;
     } else {
       setErrors(validationErrors);
     }
   };
+
 
   return (
     <div className="flex flex-col gap-8 items-center p-5 justify-center h-screen w-full">
@@ -64,7 +83,6 @@ const FindNfts = () => {
           className="border border-black rounded-md p-2 mb-2 text-gray-500"
           onChange={handleFormInputs}
         >
-          <option value=""></option>
           <option value="erc721">erc721</option>
           <option value="erc1155">erc1155</option>
         </select>

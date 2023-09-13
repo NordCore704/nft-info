@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 import React, { useEffect } from "react";
 import Image from "next/image";
 
-const OverlayBg = () => {
+const OverlayBg = ({ montserrat, ubuntu}) => {
   const [ ref, inView ] = useInView({
     threshold: 0.5,
     triggerOnce: true,
@@ -55,7 +55,7 @@ const OverlayBg = () => {
 
   }, [inView])
   return (
-    <section className="flex flex-col items-center justify-center p-5 gap-8" ref={ref}>
+    <section className={`flex flex-col items-center justify-center p-5 gap-8 ${montserrat.className}`} ref={ref}>
       {/* <hr className="w-full mb-4 h-0.5 bg-gray-500" /> */}
       {/* <CategoriesSearch /> */}
       {/* <hr className="w-full mt-4 h-0.5 bg-gray-500" /> */}
@@ -67,7 +67,7 @@ const OverlayBg = () => {
             className="w-10 h-10 rounded-full object-cover"
           />
           <article className="bg-scheme-green p-3 rounded-md border text-white">
-            <p className="capitalize text-2xl font-semibold">
+            <p className={`capitalize text-2xl font-semibold ${ubuntu.className}`}>
               A retro NFT or so?
             </p>
             <p>
@@ -80,7 +80,7 @@ const OverlayBg = () => {
         <motion.div className="flex gap-3" variants={scrollPopVariant} initial='hidden' animate={animation}>
           <Image src={vrNft} alt="avatar" className="w-10 h-10 rounded-full" />
           <article className="bg-scheme-green p-3 rounded-md border text-white">
-            <p className="capitalize text-2xl font-semibold">The Cartoon Guy</p>
+            <p className={`capitalize text-2xl font-semibold ${ubuntu.className}`}>The Cartoon Guy</p>
             <p className="">
               You may probably prefer NFTs with a cartoon-like nature, sure we
               could do you that too. You just have to set your preference in
@@ -95,7 +95,7 @@ const OverlayBg = () => {
             className="w-10 h-10 rounded-full"
           />
           <article className="bg-scheme-green p-3 rounded-md border text-white">
-            <p className="capitalize text-2xl font-semibold">
+            <p className={`${ubuntu.className} capitalize text-2xl font-semibold`}>
               Oh, you want a Portrait
             </p>
             <p>

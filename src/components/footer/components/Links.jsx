@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 
-const Links = () => {
+const Links = ({ montserrat }) => {
   return (
-    <div className="flex md:gap-6 lg:gap-6 sm:gap-6 flex-col sm:flex-row md:flex-row lg:flex-row justify-self-center self-center text-white ">
+    <div className={`flex md:gap-6 lg:gap-6 sm:gap-6 flex-col sm:flex-row md:flex-row lg:flex-row justify-self-center self-center text-white ${montserrat.className}`}>
       <div className="flex gap-1 flex-col">
         <Link
           href={"/"}

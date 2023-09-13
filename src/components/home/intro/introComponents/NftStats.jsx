@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { BsStars } from "react-icons/bs";
 import { gsap, Power3 } from "gsap";
 
-const NftStats = ({ timeline }) => {
+const NftStats = ({ timeline, montserrat, ubuntu }) => {
   // Each ref on this section represents an element to be animated with GSAP
   // 
   const bodyRef = useRef();
@@ -52,7 +52,7 @@ const NftStats = ({ timeline }) => {
 
   return (
     <div
-      className="flex sm:flex-col md:flex-col lg:flex-col items-center justify-center gap-2 p-5 opacity-0 sm:w-[30%] md:w-[30%] lg:w-[30%]"
+      className={`flex sm:flex-col md:flex-col lg:flex-col items-center justify-center gap-2 p-5 opacity-0 sm:w-[30%] md:w-[30%] lg:w-[30%] ${montserrat.className}`}
       ref={bodyRef}
     >
       <p className="opacity-0 translate-x-6" ref={starRef}>
@@ -60,15 +60,15 @@ const NftStats = ({ timeline }) => {
       </p>
 
       <div className="opacity-0 -translate-y-6" ref={textRefOne}>
-        <p className={`font-bold text-4xl`}>120+</p>
+        <p className={`font-bold text-4xl ${ubuntu.className}`}>120+</p>
         <p>NFT Arts</p>
       </div>
       <div className="opacity-0 -translate-y-6" ref={textRefTwo}>
-        <p className={`text-4xl text-center font-bold`}>45+</p>
+        <p className={`text-4xl text-center font-bold ${ubuntu.className}`}>45+</p>
         <p className={`text-center`}>Active Blockchains</p>
       </div>
       <div className="opacity-0 -translate-y-6" ref={textRefThree}>
-        <p className={`text-4xl font-bold`}>160+</p>
+        <p className={`text-4xl font-bold ${ubuntu.className}`}>160+</p>
         <p>NFT Artists</p>
       </div>
     </div>

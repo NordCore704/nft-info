@@ -5,7 +5,7 @@ import Head from "next/head";
 const about = () => {
   // The About section 
   return (
-    <section className="">
+    <section className="w-full overflow-hidden">
       <Headers />
       <About />
     </section>

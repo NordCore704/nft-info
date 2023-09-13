@@ -15,7 +15,7 @@ const Search = () => {
   }
 
   return (
-    <div className='p-4 flex flex-col gap-8'>
+    <div className='p-4 flex flex-col gap-8 overflow-hidden'>
         <motion.p className='text-4xl font-bold text-center mt-4' variants={popVariant}  transition={{
           ease: "easeInOut",
           duration: 0.9,

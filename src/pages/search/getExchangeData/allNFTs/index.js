@@ -1,13 +1,15 @@
 import React from 'react'
 import { AllExchangeNFT, Headers } from '@/exports'
-import GetAllExchangeAPI from '@/utils/getAllExchange/GetAllExchangeAPI'
+import { useRouter } from "next/router";
 
-const index = ({ data }) => {
+const index = ({}) => {
+  const router = useRouter()
+  const { data, id } = router.query
 
   return (
     <section className=''>
         <Headers />
-        <AllExchangeNFT data={data}/>
+        <AllExchangeNFT data={JSON.parse(data)}/>
     </section>
   )
 }
@@ -25,23 +27,23 @@ export default index
 //     }
 
 
-export async function getStaticProps() {
-  try {
-    const nfts = await GetAllExchangeAPI();
-    const { results } = nfts
-      const data = results.map((data) => data)
-       const { chain } = nfts;
-       console.log(nfts);
-    return {
-      props: { data, id: chain, },
-      revalidate: 3600, // Revalidate every one hour, read more about revalidation in the official nextjs docs
-    };
-  } catch (error) {
-    return {
-      props: {
-        nfts: [],
-      },
-      revalidate: 3600
-    };
-  }
-}
+// export async function getStaticProps() {
+//   try {
+//     const nfts = await GetAllExchangeAPI();
+//     const { results } = nfts
+//       const data = results.map((data) => data)
+//        const { chain } = nfts;
+//        console.log(nfts);
+//     return {
+//       props: { data, id: chain, },
+//       revalidate: 3600, // Revalidate every one hour, read more about revalidation in the official nextjs docs
+//     };
+//   } catch (error) {
+//     return {
+//       props: {
+//         nfts: [],
+//       },
+//       revalidate: 3600
+//     };
+//   }
+// }

@@ -4,12 +4,12 @@ import { useRouter } from "next/router";
 import { apiHeaderState } from "@/context/apiHeaderContext";
 import { validateFormInputsTwo } from "@/utils/validateFormInput/validateFormInput";
 import GetAllAPI from "@/utils/getAll/GetAllAPI";
+import { API_KEY } from "../../../../config";
 
 const GetAll = ({}) => {
+  const { headers, setHeaders, setFetchedData, fetchedData } = apiHeaderState();
   const router = useRouter();
   const [errors, setErrors] = useState({});
-  const [fetchedData, setFetchedData] = useState(null);
-  const { headers, setHeaders } = apiHeaderState();
 
   const handleFormInputs = (e) => {
     const { name, value } = e.target;
@@ -19,7 +19,6 @@ const GetAll = ({}) => {
   };
 
   const handleSubmit = async () => {
-
     const validationErrors = validateFormInputsTwo(headers);
     if (Object.keys(validationErrors).length === 0) {
       try {
@@ -30,17 +29,25 @@ const GetAll = ({}) => {
         const { chain } = nfts;
         console.log(results);
         console.log(nfts);
+        console.log(data);
         const response = { data, id: chain };
+        console.log(response);
         setFetchedData(response);
-        sendToResultsPage();
-      } catch (error) {}
-     
+        console.log(fetchedData);
+        console.log(response.data);
+        router.push({
+          pathname: "/search/getAll/allNFTs",
+          query: { data: JSON.stringify(response.data), id: response.id },
+        });
+      } catch (error) {
+        console.log(error, "Fetching Failed");
+      }
       return;
     } else {
       setErrors(validationErrors);
     }
   };
-  
+
   const handleRefresh = (e) => {
     e.preventDefault();
   };
@@ -48,7 +55,6 @@ const GetAll = ({}) => {
     router.push({ pathname: "/search/getAll/allNFTs", query: { data, id } });
   };
 
-  console.log(headers);
   return (
     <div className="flex flex-col items-center justify-center gap-8 p-5 min-h-screen mb-14">
       <p className="text-center text-4xl mt-5 font-semibold ">
@@ -88,7 +94,6 @@ const GetAll = ({}) => {
           className="border border-black rounded-md p-2 mb-2 text-gray-500"
           onChange={handleFormInputs}
         >
-          <option value=""></option>
           <option value="erc721">erc721</option>
           <option value="erc1155">erc1155</option>
         </select>
@@ -141,7 +146,7 @@ const GetAll = ({}) => {
       </form>
 
       <button
-        onClick={(e) => handleSubmit(e)}
+        onClick={handleSubmit}
         type="submit"
         className="p-2 text-center bg-green-500 w-32 rounded-full hover:bg-scheme-green duration-500 transition-colors font-semibold hover:text-white"
       >

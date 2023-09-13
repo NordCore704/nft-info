@@ -6,6 +6,7 @@ import Link from "next/link";
 import { MdArrowDropDown } from "react-icons/md";
 
 const SingleNFT = ({ data }) => {
+  console.log(data);
   const date = data.map((data) => data.minted_at);
   const newDate = new Date(date.toString()).toDateString();
   return (

@@ -44,7 +44,6 @@ const PreferenceTwo = () => {
   }
 
   useEffect(() => {
-    console.log(`is in view? = ${inView}`);
     if(inView){
       animation.start("visible")
     } else {
@@ -77,7 +76,7 @@ const PreferenceTwo = () => {
             Do You have any "strange" NFTs with little or no data on them,
             perhaps you want to know their current price, well this will help
             you run a wide search across the selected blockchain with some
-            details of your NFT and bring you reults.
+            details of your NFT and bring you results.
           </p>
           <Link
             href={"/search/find"}

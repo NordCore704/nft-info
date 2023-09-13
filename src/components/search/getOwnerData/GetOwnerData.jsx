@@ -2,12 +2,14 @@ import React, { useState, useRef } from "react";
 import { useRouter } from "next/router";
 import { apiHeaderState } from "@/context/apiHeaderContext";
 import { validateFormInputs } from "@/utils/validateFormInput/validateFormInput";
+import { GetAllOwnersAPI } from '@/utils/getAllOwners/GetAllOwnersAPI'
 
 const GetOwnerData = () => {
   const router = useRouter();
   const [errors, setErrors] = useState({});
   const { getOwnerDataHeaders, setGetOwnerDataHeaders } = apiHeaderState();
 
+  
   const handleFormInputs = (e) => {
     const { name, value } = e.target;
 
@@ -16,11 +18,38 @@ const GetOwnerData = () => {
     setGetOwnerDataHeaders((prev) => ({ ...prev, [name]: newValue }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const API_URL = `https://api.blockspan.com/owners/contract/${getOwnerDataHeaders.contract_address}/token/${parseInt(getOwnerDataHeaders.token_id)}`;
+
+  const sendToResultsPage = (data, summaryData) => {
+    router.push({pathname: "/search/getOwnerData/allNftOwners", query: {data, summaryData}});
+  }
+
+  const handleSubmit = async (e) => {
     const validationErrors = validateFormInputs(getOwnerDataHeaders);
+
     if (Object.keys(validationErrors).length === 0) {
-      router.push("/search/getOwnerData/allNftOwners");
+      try {
+        const nfts = await GetAllOwnersAPI(getOwnerDataHeaders, API_URL)
+        const { results } = nfts;
+        const data = results.map((data) => data);
+        const { contract_address, token_id, chain, total_owners, unique_owners } =
+        nfts;
+        const summaryData = [
+          {
+            contract_address,
+            token_id,
+            chain,
+            total_owners,
+            unique_owners,
+          },
+        ];
+        const response = { data, summaryData,}
+        sendToResultsPage(response.data, response.summaryData)
+      
+      } catch (error) {
+        console.log(error, 'Fetching Failed');
+      }
+      
       return;
     } else {
       setErrors(validationErrors);

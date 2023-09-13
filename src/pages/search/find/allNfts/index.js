@@ -1,12 +1,14 @@
 import React from 'react'
 import { AllNftFind, Headers } from '@/exports'
-import { findAllNFTs } from '@/utils/find/FindAPI'
+import { useRouter } from "next/router";
 
-const index = ({ data }) => {
+const index = ({}) => {
+  const router = useRouter()
+  const { data, id } = router.query
   return (
     <section className='w-full min-h-screen'>
       <Headers />
-      <AllNftFind data={data}/>
+      <AllNftFind data={JSON.parse(data)}/>
     </section>
   )
 }
@@ -14,15 +16,15 @@ const index = ({ data }) => {
 export default index
 
 
-export async function getStaticProps(){
+// export async function getStaticProps(){
     
-  const {results} = await import("../../../../constants/search.json");
-  const data = results.map((data) => data)
-  const { chain } = await import("../../../../constants/nftsResults.json");
-    return {
-      props: { data, id: chain }
-    }
-  }
+//   const {results} = await import("../../../../constants/search.json");
+//   const data = results.map((data) => data)
+//   const { chain } = await import("../../../../constants/nftsResults.json");
+//     return {
+//       props: { data, id: chain }
+//     }
+//   }
 
 // export async function getStaticProps() {
 //   try {

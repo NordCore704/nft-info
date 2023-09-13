@@ -12,7 +12,7 @@ import {
 } from "@/exports/image-exports";
 
 
-const ShortDescriptionSection = () => {
+const ShortDescriptionSection = ({ montserrat, ubuntu}) => {
 
   const [ ref, inView ] = useInView({
     threshold: 0.6,
@@ -78,7 +78,7 @@ const ShortDescriptionSection = () => {
     }, [inView])
  
   return (
-    <div className="relative flex flex-col md:flex-row lg:flex-row gap-3 p-5 overflow-hidden items-center justify-center rounded-md bg-gradient-to-br from-scheme-green-dark to-scheme-" ref={ref} variants={opacityVariant}  animate={animation} initial='hidden'>
+    <div className={`relative flex flex-col md:flex-row lg:flex-row gap-3 p-5 overflow-hidden items-center justify-center rounded-md bg-gradient-to-br from-scheme-green-dark to-scheme- ${montserrat.className}`} ref={ref} variants={opacityVariant}  animate={animation} initial='hidden'>
       {/* <video src="../"></video> */}
       <motion.div className="md:w-[50%] lg:ml-4 self-center rounded-md" variants={scrollPopVariant} initial='hidden' animate={animation}>
       <Image
@@ -99,7 +99,7 @@ const ShortDescriptionSection = () => {
           src={screws} alt="screw-image"
           className="w-10 absolute bottom-2 right-[25%] -z-10 rotating-2"
         />
-        <p className="text-3xl capitalize font-semibold text-center">
+        <p className={`text-3xl capitalize font-semibold text-center ${ubuntu.className}`}>
           Collect Valuable Information on Rarites
         </p>
         <p className="text-center">

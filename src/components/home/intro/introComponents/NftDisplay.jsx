@@ -4,7 +4,7 @@ import { displayNFT } from "@/exports/image-exports";
 import { Power3 } from 'gsap';
 import {motion} from 'framer-motion'
 
-const NftDisplay = () => {
+const NftDisplay = ({ ubuntu }) => {
 
   const parentAnimationVariants = {
     init: {
@@ -29,7 +29,7 @@ const NftDisplay = () => {
 
   }
   return (
-    <motion.div className="flex flex-col gap-5" variants={parentAnimationVariants}  initial='init' animate='animate' transition={{
+    <motion.div className={`flex flex-col gap-5 ${ubuntu.className}`} variants={parentAnimationVariants}  initial='init' animate='animate' transition={{
       ease: 'easeInOut',
       duration: .5,
       staggerChildren: 0.4,

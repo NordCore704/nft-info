@@ -3,7 +3,7 @@ import React, {useRef, useEffect} from 'react'
 import { BsStars } from 'react-icons/bs'
 import { Power3 } from 'gsap'
 
-const GetStarted = ({timeline}) => {
+const GetStarted = ({timeline, montserrat, ubuntu}) => {
     const mainRef = useRef()
     const textRef = useRef()
     const buttonRef = useRef()
@@ -30,14 +30,14 @@ const GetStarted = ({timeline}) => {
         })
     })
   return (
-    <div className="flex flex-col gap-3 items-center justify-center opacity-0" ref={mainRef}>
+    <div className={`flex flex-col gap-3 items-center justify-center opacity-0 ${montserrat.className}`} ref={mainRef}>
         <BsStars className="text-4xl text-green-500"/>
     <p className={`mb-3 opacity-0 -translate-y-10 text-center`} ref={textRef}>
       Get information about NFTs from the world's top artists
     </p>
     <Link
       href={"/search"}
-      className={`text-center px-5 py-3 hover:bg-scheme-green hover:text-white rounded-lg capitalize font-semibold bg-green-500 transition-colors duration-300 opacity-0 -translate-y-10`} ref={buttonRef}
+      className={`text-center px-5 py-3 hover:bg-scheme-green hover:text-white rounded-lg capitalize font-semibold bg-green-500 transition-colors duration-300 opacity-0 -translate-y-10 ${ubuntu.className}`} ref={buttonRef}
     >
       Get Started
     </Link>

@@ -1,7 +1,11 @@
 import React from "react";
 import { SingleExchangeNFT, Headers } from "@/exports";
+import { useRouter } from "next/router";
 
-const displaySingleNFT = ({ data }) => {
+const displaySingleNFT = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  const data = id
   return (
     <section className="min-h-screen">
       <Headers />
@@ -12,31 +16,31 @@ const displaySingleNFT = ({ data }) => {
 
 export default displaySingleNFT;
 
-export async function getStaticPaths() {
-  const { results } = await import(
-    "../../../../../constants/exchangeOpenSea.json"
-  );
-  const allPaths = results.map((path) => {
-    return {
-      params: {
-        id: path.key,
-      },
-    };
-  });
+// export async function getStaticPaths() {
+//   const { results } = await import(
+//     "../../../../../constants/exchangeOpenSea.json"
+//   );
+//   const allPaths = results.map((path) => {
+//     return {
+//       params: {
+//         id: path.key,
+//       },
+//     };
+//   });
 
-  return {
-    paths: allPaths,
-    fallback: false,
-  };
-}
+//   return {
+//     paths: allPaths,
+//     fallback: false,
+//   };
+// }
 
-export async function getStaticProps(context) {
-  const path = context?.params.id;
-  const { results } = await import(
-    "../../../../../constants/exchangeOpenSea.json"
-  );
-  const data = results.filter((data) => path === data.key);
-  return {
-    props: { data },
-  };
-}
+// export async function getStaticProps(context) {
+//   const path = context?.params.id;
+//   const { results } = await import(
+//     "../../../../../constants/exchangeOpenSea.json"
+//   );
+//   const data = results.filter((data) => path === data.key);
+//   return {
+//     props: { data },
+//   };
+// }

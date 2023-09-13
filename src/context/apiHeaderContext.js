@@ -11,9 +11,10 @@ const ApiContext = ({ children }) => {
     page_size: 25,
     cursor: "",
   });
+  const [fetchedData, setFetchedData] = useState({})
   const [findHeaders, setFindHeaders] = useState({
     chain: "eth-main",
-    token_type: "",
+    token_type: "erc721",
     q: "Ape",
     filter: "token_name",
     page_size: 25,
@@ -32,7 +33,7 @@ const ApiContext = ({ children }) => {
   });
 
   return (
-    <Header.Provider value={{ headers, setHeaders, findHeaders, setFindHeaders, getOwnerDataHeaders, setGetOwnerDataHeaders, getExchangeDataHeaders, setGetExchangeDataHeaders }}>
+    <Header.Provider value={{ headers, setHeaders, findHeaders, setFindHeaders, getOwnerDataHeaders, setGetOwnerDataHeaders, getExchangeDataHeaders, setGetExchangeDataHeaders, fetchedData, setFetchedData }}>
       {children}
     </Header.Provider>
   );

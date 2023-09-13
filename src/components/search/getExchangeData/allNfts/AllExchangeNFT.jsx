@@ -31,6 +31,11 @@ const AllExchangeNFT = ({ data }) => {
   //   }
   // };
 
+  // const handleRouteChange = (e) => {
+    
+  //   router.push({ pathname: `/search/getExchangeData/allNFTs/single/${e}`, query: {data: e}})
+  // }
+
   // return (
   //   <div className="p-4">
   //     <div className="paginator flex flex-col gap-4">
@@ -69,12 +74,12 @@ const AllExchangeNFT = ({ data }) => {
   //                   : "Floor Price Currently Unavailable"}
   //               </span>
   //             </p>
-  //             <Link
-  //               href={`/search/getExchangeData/allNFTs/single/${data.key}`}
+  //             <button
+  //               onClick={handleRouteChange}
   //               className="text-center bg-green-400 rounded-md p-2 font-semibold hover:text-white  hover:bg-scheme-red transition-colors duration-500"
   //             >
   //               See More
-  //             </Link>
+  //             </button>
   //           </div>
   //         </div>
   //       ))}

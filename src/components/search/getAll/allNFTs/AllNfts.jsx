@@ -3,11 +3,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { nftGirl } from "@/exports/image-exports";
+import { useRouter } from "next/router";
 
 
 const AllNfts = ({ chain, data }) => {
+  const router = useRouter()
 
   console.log(data);
+  console.log(chain)
   const [currentPage, setCurrentPage] = useState(1);
   const nftsPerPage = 5;
   const lastIndex = currentPage * nftsPerPage;
@@ -34,6 +37,11 @@ const AllNfts = ({ chain, data }) => {
     }
   };
 
+  const handleRouteChange = (e) => {
+    
+    router.push({ pathname: `/search/getAll/allNFTs/singleNFT/${e}`, query: {data: e}})
+  }
+
   return (
     <div className="p-4">
       <p className="text-center text-4xl font-medium capitalize mb-8">
@@ -51,7 +59,7 @@ const AllNfts = ({ chain, data }) => {
           >
             <div className=" flex gap-2 items-center">
               <Image
-                src={nftGirl}
+                src={data.cached_images !== null ? data.cached_images: nftGirl}
                 className="rounded-full border w-10 h-10 object-cover border-black"
                 alt="image"
               />
@@ -83,12 +91,12 @@ const AllNfts = ({ chain, data }) => {
                     }`
                   : "Price Currently Unavailable"}
               </p>
-              <Link
-                href={`/search/getAll/allNFTs/single/${data.id}`}
+              <button
+                onClick={() => handleRouteChange(data.id)}
                 className="text-center bg-green-400 rounded-md p-2 font-semibold hover:text-white  hover:bg-scheme-red transition-colors duration-500"
               >
                 See More
-              </Link>
+              </button>
             </div>
           </motion.div>
         ))}
