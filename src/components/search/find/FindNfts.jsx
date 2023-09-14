@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { ApiHeaderState } from "@/context/ApiHeaderContext";
 import { validateFormInputsThree } from "@/utils/validateFormInput/validateFormInput";
-import { FindAPI } from '@/utils/find/FindAPI';
+import FindAllNFTs from "@/utils/find/FindAPI";
 import { sendToNextPage } from "@/utils/sendQuery/sendToNextPage";
 
 const FindNfts = () => {
@@ -26,7 +26,7 @@ const FindNfts = () => {
     const validationErrors = validateFormInputsThree(findHeaders);
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const nfts = await FindAPI(findHeaders)
+        const nfts = await FindAllNFTs(findHeaders)
         const { results } = nfts;
         const data = results.map((data) => data);
         const { chain } = nfts;

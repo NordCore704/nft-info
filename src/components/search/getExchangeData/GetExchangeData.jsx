@@ -2,7 +2,7 @@ import React, { useState, } from "react";
 import { ApiHeaderState } from "@/context/ApiHeaderContext";
 import { useRouter } from "next/router";
 import { validateFormInputsTwo } from "@/utils/validateFormInput/validateFormInput";
-import { GetAllExchangeAPI } from "@/utils/getAllExchange/GetAllExchangeAPI";
+import GetAllExchangeAPI from "@/utils/getAllExchange/GetAllExchangeAPI";
 import { sendToNextPage } from "@/utils/sendQuery/sendToNextPage";
 
 const GetExchangeData = () => {
@@ -42,7 +42,6 @@ const GetExchangeData = () => {
     }
   };
 
-  console.log(getExchangeDataHeaders);
 
   return (
     <div className="flex flex-col gap-8 items-center p-5 justify-center h-screen">
