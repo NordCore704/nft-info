@@ -19,12 +19,6 @@ const GetExchangeData = () => {
     setGetExchangeDataHeaders((prev) => ({ ...prev, [name]: newValue }));
   };
 
-  const sendToResultsPage = (data, id) => {
-    router.push({
-      pathname: "/search/getExchangeData/allNFTs",
-      query: { data: JSON.stringify(data), id },
-    });
-  };
 
   const handleSubmit = async (e) => {
     const nextURL = "/search/getExchangeData/allNFTs"

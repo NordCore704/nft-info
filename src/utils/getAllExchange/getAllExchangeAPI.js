@@ -8,11 +8,13 @@ async function GetAllExchangeAPI(params) {
     const response = await axios.get(API_URL, {
       params,
       headers: {
+        Accept: 'application/json',
         "X-API-KEY": `${API_KEY}`,
       },
     });
     return response.data;
   } catch (error) {
+    console.log('Failed to fetch NFTs ', error);
     throw new Error("Failed to fetch NFTs");
   }
 }

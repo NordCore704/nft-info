@@ -11,6 +11,7 @@ async function GetAllOwnersAPI(params, url) {
     const response = await axios.get(url, {
       params,
       headers: {
+        Accept: 'application/json',
         "X-API-KEY": `${API_KEY}`,
       },
     });

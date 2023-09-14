@@ -14,7 +14,6 @@ async function FindAllNFTs(params) {
     });
     return response.data;
   } catch (error) {
-    console.log('Failed to fetch NFTs ', error);
     throw new Error("Failed to fetch NFTs");
   }
 }
