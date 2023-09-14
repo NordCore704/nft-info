@@ -7,8 +7,8 @@ const TransactionCurrency = ({ data }) => {
         <p>Currency Data Not Available</p>
       ) : (
         <>
-          {data.map((data) => (
-            <div className="">
+          {data.map((data, index) => (
+            <div className="" key={index}>
               <p className="font-semibold">
                 Symbol: <span className="font-medium">{data.symbol}</span>
               </p>

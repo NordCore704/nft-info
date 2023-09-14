@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { apiHeaderState } from "@/context/apiHeaderContext";
+import { ApiHeaderState } from "@/context/ApiHeaderContext";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { validateFormInputsTwo } from "@/utils/validateFormInput/validateFormInput";
@@ -7,10 +7,9 @@ import { GetAllExchangeAPI } from "@/utils/getAllExchange/GetAllExchangeAPI";
 
 const GetExchangeData = () => {
   const router = useRouter();
-  const API_URL = "https://api.blockspan.com/v1/exchanges/collections";
   const [errors, setErrors] = useState({});
   const { getExchangeDataHeaders, setGetExchangeDataHeaders } =
-    apiHeaderState();
+    ApiHeaderState();
   const handleFormInputs = (e) => {
     const { name, value } = e.target;
 

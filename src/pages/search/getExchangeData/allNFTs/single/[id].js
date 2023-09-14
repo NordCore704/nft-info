@@ -2,7 +2,7 @@ import React from "react";
 import { SingleExchangeNFT, Headers } from "@/exports";
 import { useRouter } from "next/router";
 
-const displaySingleNFT = () => {
+const DisplaySingleNFT = () => {
   const router = useRouter();
   const { id } = router.query;
   const data = id
@@ -14,7 +14,7 @@ const displaySingleNFT = () => {
   )
 };
 
-export default displaySingleNFT;
+export default DisplaySingleNFT;
 
 // export async function getStaticPaths() {
 //   const { results } = await import(

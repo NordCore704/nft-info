@@ -41,6 +41,6 @@ const ApiContext = ({ children }) => {
 
 export default ApiContext;
 
-export const apiHeaderState = () => {
+export const ApiHeaderState = () => {
   return useContext(Header);
 };

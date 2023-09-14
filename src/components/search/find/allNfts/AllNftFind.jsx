@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import { nftGirl } from "@/exports/image-exports";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
-const AllNftFind = ({ data }) => {
+const AllNftFind = ({ }) => {
+  const router = useRouter()
+  const { data, id } = router.query
+  const parsedData = JSON.parse(data)
   const [currentPage, setCurrentPage] = useState(1);
   const nftsPerPage = 5;
   const lastIndex = currentPage * nftsPerPage;
   const firstIndex = lastIndex - nftsPerPage;
-  const nfts = data.slice(firstIndex, lastIndex);
-  const nPage = Math.ceil(data.length / nftsPerPage);
+  const nfts = parsedData.slice(firstIndex, lastIndex);
+  const nPage = Math.ceil(parsedData.length / nftsPerPage);
   const numbers = [...Array(nPage + 1).keys()].slice(1);
 
   const prevPage = (e) => {
@@ -32,7 +36,7 @@ const AllNftFind = ({ data }) => {
   return (
     <div className="p-4">
       <div className="paginator flex flex-col gap-4">
-        {data ? (
+        {parsedData ? (
           <>
             {nfts.map((data, index) => (
               <div

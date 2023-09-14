@@ -1,14 +1,14 @@
 import React, { useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { apiHeaderState } from "@/context/apiHeaderContext";
+import { ApiHeaderState } from "@/context/ApiHeaderContext";
 import { validateFormInputsThree } from "@/utils/validateFormInput/validateFormInput";
 import { FindAPI } from '@/utils/find/FindAPI';
 
 const FindNfts = () => {
   const collectionInputRef = useRef();
   const router = useRouter();
-  const { findHeaders, setFindHeaders } = apiHeaderState();
+  const { findHeaders, setFindHeaders } = ApiHeaderState();
 
   const [errors, setErrors] = useState({});
   

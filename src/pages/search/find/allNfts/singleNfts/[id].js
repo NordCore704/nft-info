@@ -1,7 +1,7 @@
 import React from 'react'
 import { SingleFind, Headers } from '@/exports'
 
-const singleFindNFT = ({ data }) => {
+const SingleFindNFT = ({ data }) => {
   return (
     <section className='min-h-screen'>
       <Headers />
@@ -10,31 +10,31 @@ const singleFindNFT = ({ data }) => {
   )
 }
 
-export default singleFindNFT
+export default SingleFindNFT
 
-export async function getStaticPaths() {
-  const {results} = await import("../../../../../constants/search.json");
-  const allPaths = results.map((path) => {
-    return {
-      params: {
-        id: path.example_token_id,
-      },
-    };
-  });
+// export async function getStaticPaths() {
+//   const {results} = await import("../../../../../constants/search.json");
+//   const allPaths = results.map((path) => {
+//     return {
+//       params: {
+//         id: path.example_token_id,
+//       },
+//     };
+//   });
 
 
-  return {
-    paths: allPaths,
-    fallback: false,
-  };
-}
+//   return {
+//     paths: allPaths,
+//     fallback: false,
+//   };
+// }
 
-export async function getStaticProps(context){
+// export async function getStaticProps(context){
     
-  const path = context?.params.id
-  const {results} = await import("../../../../../constants/search.json");
-  const data = results.filter((data) => path === data.example_token_id)
-    return {
-      props: { data }
-    }
-  }
+//   const path = context?.params.id
+//   const {results} = await import("../../../../../constants/search.json");
+//   const data = results.filter((data) => path === data.example_token_id)
+//     return {
+//       props: { data }
+//     }
+//   }

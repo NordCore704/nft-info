@@ -1,13 +1,13 @@
 import React, { useState, useRef } from "react";
 import { useRouter } from "next/router";
-import { apiHeaderState } from "@/context/apiHeaderContext";
+import { ApiHeaderState } from "@/context/ApiHeaderContext";
 import { validateFormInputs } from "@/utils/validateFormInput/validateFormInput";
 import { GetAllOwnersAPI } from '@/utils/getAllOwners/GetAllOwnersAPI'
 
 const GetOwnerData = () => {
   const router = useRouter();
   const [errors, setErrors] = useState({});
-  const { getOwnerDataHeaders, setGetOwnerDataHeaders } = apiHeaderState();
+  const { getOwnerDataHeaders, setGetOwnerDataHeaders } = ApiHeaderState();
 
   
   const handleFormInputs = (e) => {

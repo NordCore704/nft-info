@@ -1,14 +1,12 @@
 import React from 'react'
 import { AllNftFind, Headers } from '@/exports'
-import { useRouter } from "next/router";
 
 const index = ({}) => {
-  const router = useRouter()
-  const { data, id } = router.query
+  
   return (
     <section className='w-full min-h-screen'>
       <Headers />
-      <AllNftFind data={JSON.parse(data)}/>
+      <AllNftFind />
     </section>
   )
 }

@@ -1,13 +1,12 @@
 import React, { useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { apiHeaderState } from "@/context/apiHeaderContext";
+import { ApiHeaderState } from "@/context/ApiHeaderContext";
 import { validateFormInputsTwo } from "@/utils/validateFormInput/validateFormInput";
 import GetAllAPI from "@/utils/getAll/GetAllAPI";
-import { API_KEY } from "../../../../config";
 
 const GetAll = ({}) => {
-  const { headers, setHeaders, setFetchedData, fetchedData } = apiHeaderState();
+  const { headers, setHeaders, setFetchedData, fetchedData } = ApiHeaderState();
   const router = useRouter();
   const [errors, setErrors] = useState({});
 

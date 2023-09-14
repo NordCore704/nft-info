@@ -6,17 +6,18 @@ import { nftGirl } from "@/exports/image-exports";
 import { useRouter } from "next/router";
 
 
-const AllNfts = ({ chain, data }) => {
+const AllNfts = ({ }) => {
   const router = useRouter()
+  const { data, id } = router.query
 
-  console.log(data);
-  console.log(chain)
+  const parsedData = JSON.parse(data)
+
   const [currentPage, setCurrentPage] = useState(1);
   const nftsPerPage = 5;
   const lastIndex = currentPage * nftsPerPage;
   const firstIndex = lastIndex - nftsPerPage;
-  const nfts = data.slice(firstIndex, lastIndex);
-  const nPage = Math.ceil(data.length / nftsPerPage);
+  const nfts = parsedData.slice(firstIndex, lastIndex);
+  const nPage = Math.ceil(parsedData.length / nftsPerPage);
   const numbers = [...Array(nPage + 1).keys()].slice(1);
 
   const prevPage = (e) => {

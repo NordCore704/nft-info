@@ -2,7 +2,7 @@ import React from "react";
 import { OwnerData, Headers } from "@/exports";
 import { useRouter } from "next/router";
 
-const index = ({}) => {
+const Index = ({}) => {
   const router = useRouter()
   const { data, summaryData } = router.query
   return (
@@ -13,7 +13,7 @@ const index = ({}) => {
   );
 };
 
-export default index;
+export default Index;
 
 // export async function getStaticProps() {
 //   const { results } = await import("../../../../constants/getOwnerData.json");

@@ -1,9 +1,9 @@
 import React from "react";
 import { SingleNFT, Headers } from "@/exports";
 import { useRouter } from "next/router";
-import { apiHeaderState } from "@/context/apiHeaderContext";
+import { apiHeaderState } from "@/context/ApiHeaderContext";
 
-const getAllDynamic = ({}) => {
+const GetAllDynamic = ({}) => {
   const router = useRouter();
   const { id } = router.query;
   const data = id
@@ -15,7 +15,7 @@ const getAllDynamic = ({}) => {
   );
 };
 
-export default getAllDynamic;
+export default GetAllDynamic;
 
 // export async function getStaticPaths() {
 //   const {results} = await import("../../../../../constants/nftsResults.json");

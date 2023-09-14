@@ -2,7 +2,7 @@ import React from 'react'
 import { AllExchangeNFT, Headers } from '@/exports'
 import { useRouter } from "next/router";
 
-const index = ({}) => {
+const Index = ({}) => {
   const router = useRouter()
   const { data, id } = router.query
 
@@ -14,7 +14,7 @@ const index = ({}) => {
   )
 }
 
-export default index
+export default Index
 
 // export async function getStaticProps(){
     

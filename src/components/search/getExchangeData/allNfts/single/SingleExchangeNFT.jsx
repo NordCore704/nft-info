@@ -7,6 +7,7 @@ import {
   SingleExchangeContracts,
 } from "@/exports";
 import { MdArrowDropDown } from "react-icons/md";
+import Link from "next/link";
 
 const SingleExchangeNFT = ({ data }) => {
   return (

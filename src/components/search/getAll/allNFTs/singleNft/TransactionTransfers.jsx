@@ -5,8 +5,8 @@ const TransactionTransfers = ({ data }) => {
     <div className="border-2 border-black p-4 rounded-md">
       {Array.isArray(data) && data.length !== 0 ? (
         <>
-          {data.map((data) => (
-            <div className="flex flex-col gap-1.5">
+          {data.map((data, index) => (
+            <div className="flex flex-col gap-1.5" key={index}>
               <p className="font-semibold">
                 Symbol: <span className="font-medium">{data?.symbol}</span>
               </p>

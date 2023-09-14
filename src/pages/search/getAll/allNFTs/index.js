@@ -1,19 +1,16 @@
 import React, { useEffect } from "react";
 import { AllNfts, Headers } from "@/exports";
-import { apiHeaderState } from "@/context/apiHeaderContext";
+import { apiHeaderState } from "@/context/ApiHeaderContext";
 import GetAllAPI from "@/utils/getAll/GetAllAPI";
-import { useRouter } from "next/router";
+
 
 const index = ({}) => {
-  const router = useRouter()
-  const { data, id } = router.query
-
-  console.log(JSON.parse(data));
+ 
 
   return (
     <div>
       <Headers />
-      <AllNfts data={JSON.parse(data)} chain={id}/>
+      <AllNfts />
     </div>
   );
 };
