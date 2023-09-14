@@ -11,6 +11,7 @@ const AllNfts = ({ }) => {
   const { data, id } = router.query
 
   const parsedData = JSON.parse(data)
+  console.log(parsedData);
 
   const [currentPage, setCurrentPage] = useState(1);
   const nftsPerPage = 5;
@@ -38,15 +39,16 @@ const AllNfts = ({ }) => {
     }
   };
 
-  const handleRouteChange = (e) => {
-    
-    router.push({ pathname: `/search/getAll/allNFTs/singleNFT/${e}`, query: {data: e}})
+  const handleRouteChange = (e) => () => {
+    const filteredData = nfts.find((data) => e === data.id )
+    console.log(filteredData);
+    router.push({ pathname: `/search/getAll/allNFTs/singleNFT/${e}`, query: {data: filteredData}})
   }
 
   return (
     <div className="p-4">
       <p className="text-center text-4xl font-medium capitalize mb-8">
-        {chain}
+        {id}
       </p>
       <div className="paginator flex flex-col gap-4">
         {nfts.map((data, index) => (
@@ -93,7 +95,7 @@ const AllNfts = ({ }) => {
                   : "Price Currently Unavailable"}
               </p>
               <button
-                onClick={() => handleRouteChange(data.id)}
+                onClick={handleRouteChange(data.id)}
                 className="text-center bg-green-400 rounded-md p-2 font-semibold hover:text-white  hover:bg-scheme-red transition-colors duration-500"
               >
                 See More

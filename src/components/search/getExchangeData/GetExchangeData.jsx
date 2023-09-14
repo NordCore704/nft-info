@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, } from "react";
 import { ApiHeaderState } from "@/context/ApiHeaderContext";
-import axios from "axios";
 import { useRouter } from "next/router";
 import { validateFormInputsTwo } from "@/utils/validateFormInput/validateFormInput";
 import { GetAllExchangeAPI } from "@/utils/getAllExchange/GetAllExchangeAPI";
@@ -37,7 +36,6 @@ const GetExchangeData = () => {
         const { chain } = nfts;
         const response = { data, id: chain };
         sendToResultsPage(response.data, response.id);
-        
       } catch (error) {
         console.log(error, "Fetching Failed");
       }

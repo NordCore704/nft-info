@@ -1,12 +1,10 @@
 import React from "react";
 import { SingleNFT, Headers } from "@/exports";
 import { useRouter } from "next/router";
-import { apiHeaderState } from "@/context/ApiHeaderContext";
 
 const GetAllDynamic = ({}) => {
   const router = useRouter();
-  const { id } = router.query;
-  const data = id
+  const data = router.query.data;
   return (
     <section className="min-h-screen">
       <Headers />

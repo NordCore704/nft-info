@@ -1,12 +1,12 @@
-import React, { useRef, useState } from "react";
-import Link from "next/link";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { ApiHeaderState } from "@/context/ApiHeaderContext";
 import { validateFormInputsTwo } from "@/utils/validateFormInput/validateFormInput";
 import GetAllAPI from "@/utils/getAll/GetAllAPI";
+import { sendToNextPage } from "@/utils/sendQuery/sendToNextPage";
 
 const GetAll = ({}) => {
-  const { headers, setHeaders, setFetchedData, fetchedData } = ApiHeaderState();
+  const { headers, setHeaders,} = ApiHeaderState();
   const router = useRouter();
   const [errors, setErrors] = useState({});
 
@@ -18,6 +18,7 @@ const GetAll = ({}) => {
   };
 
   const handleSubmit = async () => {
+    const nextURL = '/search/getAll/allNFTs'
     const validationErrors = validateFormInputsTwo(headers);
     if (Object.keys(validationErrors).length === 0) {
       try {
@@ -26,18 +27,14 @@ const GetAll = ({}) => {
         const data = results.map((data) => data);
 
         const { chain } = nfts;
-        console.log(results);
-        console.log(nfts);
-        console.log(data);
+
         const response = { data, id: chain };
-        console.log(response);
-        setFetchedData(response);
-        console.log(fetchedData);
-        console.log(response.data);
-        router.push({
-          pathname: "/search/getAll/allNFTs",
-          query: { data: JSON.stringify(response.data), id: response.id },
-        });
+
+        // router.push({
+        //   pathname: "/search/getAll/allNFTs",
+        //   query: { data: JSON.stringify(response.data), id: response.id },
+        // });
+        sendToNextPage(router, nextURL, response.data, response.id )
       } catch (error) {
         console.log(error, "Fetching Failed");
       }

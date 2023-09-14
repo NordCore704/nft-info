@@ -1,7 +1,10 @@
 import React from 'react'
 import { SingleFind, Headers } from '@/exports'
+import { useRouter } from 'next/router'
 
-const SingleFindNFT = ({ data }) => {
+const SingleFindNFT = ({ }) => {
+  const router = useRouter()
+  const data = router.query.data
   return (
     <section className='min-h-screen'>
       <Headers />

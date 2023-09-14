@@ -33,6 +33,13 @@ const AllNftFind = ({ }) => {
       setCurrentPage(currentPage + 1);
     }
   };
+
+  const handleRouteChange = (e) => () => {
+    const filteredData = nfts.find((data) => e === data.id )
+    console.log(filteredData);
+    router.push({ pathname: `/search/find/allNfts/singleNfts/${e}`, query: {data: filteredData}})
+  }
+
   return (
     <div className="p-4">
       <div className="paginator flex flex-col gap-4">
@@ -64,12 +71,12 @@ const AllNftFind = ({ }) => {
                 </p>
 
                 <div className="self-end flex gap-2 items-center">
-                  <Link
-                    href={`/search/find/allNfts/singleNfts/${data.example_token_id}`}
+                  <button
+                    onClick={handleRouteChange(e)}
                     className="text-center bg-green-400 rounded-md p-2 font-semibold hover:text-white  hover:bg-scheme-red transition-colors duration-500"
                   >
                     See More
-                  </Link>
+                  </button>
                 </div>
               </div>
             ))}
