@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { ApiHeaderState } from "@/context/ApiHeaderContext";
 import { validateFormInputsThree } from "@/utils/validateFormInput/validateFormInput";
 import { FindAPI } from '@/utils/find/FindAPI';
+import { sendToNextPage } from "@/utils/sendQuery/sendToNextPage";
 
 const FindNfts = () => {
   const collectionInputRef = useRef();
@@ -20,12 +20,8 @@ const FindNfts = () => {
     setFindHeaders((prev) => ({ ...prev, [name]: newValue }));
   };
 
-  const sendToResultsPage = (data, id) => {
-
-    router.push({ pathname: "/search/getOwnerData/allNftOwners", query: { data: JSON.stringify(data), id } });
-  };
-
   const handleSubmit = async (e) => {
+    const nextURL = '/search/getOwnerData/allNftOwners'
     e.preventDefault();
     const validationErrors = validateFormInputsThree(findHeaders);
     if (Object.keys(validationErrors).length === 0) {
@@ -35,12 +31,10 @@ const FindNfts = () => {
         const data = results.map((data) => data);
         const { chain } = nfts;
         const response = { data, id: chain}
-        sendToResultsPage(response.data, response.id)
-        
+        sendToNextPage(router, nextURL, response.data, response.id)
       } catch (error) {
         console.log(error, 'Fetching Failed');
       }
-      // router.push("/search/getOwnerData/allNftOwners");
       return;
     } else {
       setErrors(validationErrors);

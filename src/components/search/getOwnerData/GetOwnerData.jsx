@@ -25,6 +25,7 @@ const GetOwnerData = () => {
   }
 
   const handleSubmit = async (e) => {
+    const nextURL = "/search/getOwnerData/allNftOwners"
     const validationErrors = validateFormInputs(getOwnerDataHeaders);
 
     if (Object.keys(validationErrors).length === 0) {

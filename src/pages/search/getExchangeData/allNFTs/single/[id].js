@@ -4,7 +4,8 @@ import { useRouter } from "next/router";
 
 const DisplaySingleNFT = () => {
   const router = useRouter();
-  const data = router.query.data;
+  const parsedData = JSON.parse(router.query.filteredData)
+  const data = [parsedData]
   return (
     <section className="min-h-screen">
       <Headers />

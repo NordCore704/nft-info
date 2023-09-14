@@ -3,6 +3,7 @@ import { ApiHeaderState } from "@/context/ApiHeaderContext";
 import { useRouter } from "next/router";
 import { validateFormInputsTwo } from "@/utils/validateFormInput/validateFormInput";
 import { GetAllExchangeAPI } from "@/utils/getAllExchange/GetAllExchangeAPI";
+import { sendToNextPage } from "@/utils/sendQuery/sendToNextPage";
 
 const GetExchangeData = () => {
   const router = useRouter();
@@ -26,6 +27,7 @@ const GetExchangeData = () => {
   };
 
   const handleSubmit = async (e) => {
+    const nextURL = "/search/getExchangeData/allNFTs"
     e.preventDefault();
     const validationErrors = validateFormInputsTwo(getExchangeDataHeaders);
     if (Object.keys(validationErrors).length === 0) {
@@ -35,7 +37,7 @@ const GetExchangeData = () => {
         const data = results.map((data) => data);
         const { chain } = nfts;
         const response = { data, id: chain };
-        sendToResultsPage(response.data, response.id);
+        sendToNextPage(router, nextURL, response.data, response.id)
       } catch (error) {
         console.log(error, "Fetching Failed");
       }

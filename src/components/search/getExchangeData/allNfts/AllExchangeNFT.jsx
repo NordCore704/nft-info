@@ -34,7 +34,7 @@ const AllExchangeNFT = ({ data }) => {
   const handleRouteChange = (e) => {
     const filteredData = nfts.find((data) => e === data.key )
     console.log(filteredData);
-    router.push({ pathname: `/search/getExchangeData/allNFTs/singleNFT/${e}`, query: {data: filteredData}})
+    router.push({ pathname: `/search/getExchangeData/allNFTs/singleNFT/${e}`, query: {filteredData: JSON.stringify(filteredData)}})
   }
 
   return (

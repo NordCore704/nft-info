@@ -5,9 +5,7 @@ import { useRouter } from "next/router";
 const GetAllDynamic = ({}) => {
   const router = useRouter();
   const parsedData = JSON.parse(router.query.filteredData)
-  console.log(parsedData);
   const data = [parsedData]
-  console.log(router.query)
   return (
     <section className="min-h-screen">
       <Headers />
@@ -17,42 +15,3 @@ const GetAllDynamic = ({}) => {
 };
 
 export default GetAllDynamic;
-
-// export async function getStaticPaths() {
-//   const {results} = await import("../../../../../constants/nftsResults.json");
-//   const allPaths = results.map((path) => {
-//     return {
-//       params: {
-//         id: path.id,
-//       },
-//     };
-//   });
-
-//   return {
-//     paths: allPaths,
-//     fallback: false,
-//   };
-// }
-
-// export async function getStaticProps(context){
-
-//   const path = context?.params.id
-//   const {results} = await import("../../../../../constants/nftsResults.json");
-//   const data = results.filter((data) => path === data.id)
-//     return {
-//       props: { data }
-//     }
-//   }
-
-// export async function getStaticProps({ params }) {
-//   const { id } = params;
-//   const { fetchedData } = apiHeaderState();
-
-//   const data = fetchedData.find((item) => item.id === id.id);
-
-//   return {
-//     props: {
-//       data
-//     }
-//   }
-// }

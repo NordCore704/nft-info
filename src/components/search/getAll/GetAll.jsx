@@ -25,15 +25,8 @@ const GetAll = ({}) => {
         const nfts = await GetAllAPI(headers);
         const { results } = nfts;
         const data = results.map((data) => data);
-
         const { chain } = nfts;
-
         const response = { data, id: chain };
-
-        // router.push({
-        //   pathname: "/search/getAll/allNFTs",
-        //   query: { data: JSON.stringify(response.data), id: response.id },
-        // });
         sendToNextPage(router, nextURL, response.data, response.id )
       } catch (error) {
         console.log(error, "Fetching Failed");

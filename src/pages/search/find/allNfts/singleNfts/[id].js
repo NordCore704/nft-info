@@ -3,8 +3,9 @@ import { SingleFind, Headers } from '@/exports'
 import { useRouter } from 'next/router'
 
 const SingleFindNFT = ({ }) => {
-  const router = useRouter()
-  const data = router.query.data
+  const router = useRouter();
+  const parsedData = JSON.parse(router.query.filteredData)
+  const data = [parsedData]
   return (
     <section className='min-h-screen'>
       <Headers />
