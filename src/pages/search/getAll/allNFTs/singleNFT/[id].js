@@ -4,7 +4,10 @@ import { useRouter } from "next/router";
 
 const GetAllDynamic = ({}) => {
   const router = useRouter();
-  const data = router.query.data;
+  const parsedData = JSON.parse(router.query.filteredData)
+  console.log(parsedData);
+  const data = [parsedData]
+  console.log(router.query)
   return (
     <section className="min-h-screen">
       <Headers />

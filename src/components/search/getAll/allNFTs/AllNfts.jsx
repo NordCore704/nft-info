@@ -42,7 +42,7 @@ const AllNfts = ({ }) => {
   const handleRouteChange = (e) => () => {
     const filteredData = nfts.find((data) => e === data.id )
     console.log(filteredData);
-    router.push({ pathname: `/search/getAll/allNFTs/singleNFT/${e}`, query: {data: filteredData}})
+    router.push({ pathname: `/search/getAll/allNFTs/singleNFT/${e}`, query: {filteredData: JSON.stringify(filteredData)}})
   }
 
   return (
