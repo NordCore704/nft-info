@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { useRouter } from "next/router";
 import { ApiHeaderState } from "@/context/apiHeaderContext";
 import { validateFormInputs } from "@/utils/validateFormInput/validateFormInput";
-import { GetAllOwnersAPI } from '@/utils/getAllOwners/GetAllOwnersAPI'
+import { GetAllOwnersAPI } from '@/utils/getAllOwners/getAllOwnersAPI'
 
 const GetOwnerData = () => {
   const router = useRouter();

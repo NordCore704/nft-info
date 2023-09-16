@@ -2,7 +2,7 @@ import React, { useState, } from "react";
 import { ApiHeaderState } from "@/context/apiHeaderContext";
 import { useRouter } from "next/router";
 import { validateFormInputsTwo } from "@/utils/validateFormInput/validateFormInput";
-import GetAllExchangeAPI from "@/utils/getAllExchange/GetAllExchangeAPI";
+import GetAllExchangeAPI from "@/utils/getAllExchange/getAllExchangeAPI";
 import { sendToNextPage } from "@/utils/sendQuery/sendToNextPage";
 
 const GetExchangeData = () => {
