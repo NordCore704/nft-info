@@ -21,7 +21,7 @@ const FindNfts = () => {
   };
 
   const handleSubmit = async (e) => {
-    const nextURL = '/search/getOwnerData/allNftOwners'
+    const nextURL = '/search/find/allNfts'
     e.preventDefault();
     const validationErrors = validateFormInputsThree(findHeaders);
     if (Object.keys(validationErrors).length === 0) {
