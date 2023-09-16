@@ -72,7 +72,7 @@ const AllNftFind = ({ }) => {
 
                 <div className="self-end flex gap-2 items-center">
                   <button
-                    onClick={handleRouteChange(e)}
+                    onClick={handleRouteChange(data.example_token_id)}
                     className="text-center bg-green-400 rounded-md p-2 font-semibold hover:text-white  hover:bg-scheme-red transition-colors duration-500"
                   >
                     See More
