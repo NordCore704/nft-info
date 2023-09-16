@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { ApiHeaderState } from "@/context/ApiHeaderContext";
+import { ApiHeaderState } from "@/context/apiHeaderContext";
 import { validateFormInputsTwo } from "@/utils/validateFormInput/validateFormInput";
-import GetAllAPI from "@/utils/getAll/GetAllAPI";
+import GetAllAPI from "@/utils/getAll/getAllAPI";
 import { sendToNextPage } from "@/utils/sendQuery/sendToNextPage";
 
 const GetAll = ({}) => {

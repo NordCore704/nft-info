@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { AllNfts, Headers } from "@/exports";
-import { apiHeaderState } from "@/context/ApiHeaderContext";
-import GetAllAPI from "@/utils/getAll/GetAllAPI";
+import { apiHeaderState } from "@/context/apiHeaderContext";
+import GetAllAPI from "@/utils/getAll/getAllAPI";
 
 
 const index = ({}) => {

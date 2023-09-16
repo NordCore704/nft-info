@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useRouter } from "next/router";
-import { ApiHeaderState } from "@/context/ApiHeaderContext";
+import { ApiHeaderState } from "@/context/apiHeaderContext";
 import { validateFormInputsThree } from "@/utils/validateFormInput/validateFormInput";
-import FindAllNFTs from "@/utils/find/FindAPI";
+import FindAllNFTs from "@/utils/find/findAPI";
 import { sendToNextPage } from "@/utils/sendQuery/sendToNextPage";
 
 const FindNfts = () => {
