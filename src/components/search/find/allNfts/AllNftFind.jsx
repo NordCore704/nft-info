@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { nftGirl } from "@/exports/image-exports";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 const AllNftFind = ({ }) => {
   const router = useRouter()
   const { data, id } = router.query
   const parsedData = JSON.parse(data)
-  console.log(parsedData);
   const [currentPage, setCurrentPage] = useState(1);
   const nftsPerPage = 5;
   const lastIndex = currentPage * nftsPerPage;
