@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_KEY } from "../../../config";
 
-const API_URL = "https://api.blockspan.com/v1/exchange/collections";
+const API_URL = "https://api.blockspan.com/v1/exchanges/collections";
 
 async function GetAllExchangeAPI(params) {
   try {

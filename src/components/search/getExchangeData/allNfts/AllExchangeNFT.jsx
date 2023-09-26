@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { nftGirl } from "@/exports/image-exports";
+import { useRouter } from "next/router";
 
 const AllExchangeNFT = ({ data }) => {
   console.log(data);
+
+  const router = useRouter()
   const [currentPage, setCurrentPage] = useState(1);
   const nftsPerPage = 5;
   const lastIndex = currentPage * nftsPerPage;
@@ -31,10 +34,10 @@ const AllExchangeNFT = ({ data }) => {
     }
   };
 
-  const handleRouteChange = (e) => {
+  const handleRouteChange = (e) => () => {
     const filteredData = nfts.find((data) => e === data.key )
     console.log(filteredData);
-    router.push({ pathname: `/search/getExchangeData/allNFTs/singleNFT/${e}`, query: {filteredData: JSON.stringify(filteredData)}})
+    router.push({ pathname: `/search/getExchangeData/allNFTs/single/${e}`, query: {filteredData: JSON.stringify(filteredData)}})
   }
 
   return (
