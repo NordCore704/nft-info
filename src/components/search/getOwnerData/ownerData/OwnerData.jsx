@@ -16,6 +16,8 @@ const OwnerData = ({ data, summaryData }) => {
   const firstDateFormat = new Date(firstOwned.toString()).toDateString();
   const lastDateFormat = new Date(lastOwned.toString()).toDateString();
 
+  console.log(summaryData);
+
   return (
     <div className="h-screen p-5 flex flex-col items-center justify-center">
       {data ? (

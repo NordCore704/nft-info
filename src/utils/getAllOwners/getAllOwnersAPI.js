@@ -3,7 +3,7 @@ import { API_KEY } from "../../../config";
 
 
 
-async function GetAllOwnersAPI(params, url) {
+async function getAllOwnersAPI(params, url) {
 
   try {
     const response = await axios.get(url, {
@@ -15,8 +15,10 @@ async function GetAllOwnersAPI(params, url) {
     });
     return response.data;
   } catch (error) {
+    console.log(error)
     throw new Error("Failed to fetch NFTs");
+    
   }
 }
 
-export default GetAllOwnersAPI
+export default getAllOwnersAPI

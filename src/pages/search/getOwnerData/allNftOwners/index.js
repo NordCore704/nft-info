@@ -5,10 +5,14 @@ import { useRouter } from "next/router";
 const Index = ({}) => {
   const router = useRouter()
   const { data, summaryData } = router.query
+
+  const parsedData = JSON.parse(data)
+  const parsedSummaryData = JSON.parse(summaryData)
   return (
     <section className="min-h-screen">
       <Headers />
-      <OwnerData data={JSON.parse(data)} summaryData={summaryData} />
+        
+      <OwnerData data={parsedData} summaryData={parsedSummaryData} />
     </section>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { useRouter } from "next/router";
 import { ApiHeaderState } from "@/context/apiHeaderContext";
 import { validateFormInputs } from "@/utils/validateFormInput/validateFormInput";
-import  GetAllOwnersAPI from '@/utils/getAllOwners/getAllOwnersAPI'
+import getAllOwnersAPI from '@/utils/getAllOwners/getAllOwnersAPI'
 
 const GetOwnerData = () => {
   const router = useRouter();
@@ -18,10 +18,11 @@ const GetOwnerData = () => {
     setGetOwnerDataHeaders((prev) => ({ ...prev, [name]: newValue }));
   };
 
-  const API_URL = `https://api.blockspan.com/owners/contract/${getOwnerDataHeaders.contract_address}/token/${parseInt(getOwnerDataHeaders.token_id)}`;
+  const API_URL = `https://api.blockspan.com/v1/owners/contract/${getOwnerDataHeaders.contract_address}/token/${getOwnerDataHeaders.token_id}`;
+
 
   const sendToResultsPage = (data, summaryData) => {
-    router.push({pathname: "/search/getOwnerData/allNftOwners", query: {data, summaryData}});
+    router.push({pathname: "/search/getOwnerData/allNftOwners", query: {data: JSON.stringify(data), summaryData: JSON.stringify(summaryData)}});
   }
 
   const handleSubmit = async (e) => {
@@ -30,7 +31,7 @@ const GetOwnerData = () => {
 
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const nfts = await GetAllOwnersAPI(getOwnerDataHeaders, API_URL)
+        const nfts = await getAllOwnersAPI(getOwnerDataHeaders, API_URL)
         const { results } = nfts;
         const data = results.map((data) => data);
         const { contract_address, token_id, chain, total_owners, unique_owners } =
@@ -45,6 +46,7 @@ const GetOwnerData = () => {
           },
         ];
         const response = { data, summaryData,}
+        console.log(data);
         sendToResultsPage(response.data, response.summaryData)
       
       } catch (error) {
