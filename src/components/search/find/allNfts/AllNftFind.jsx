@@ -8,6 +8,7 @@ const AllNftFind = ({ }) => {
   const router = useRouter()
   const { data, id } = router.query
   const parsedData = JSON.parse(data)
+  console.log(parsedData);
   const [currentPage, setCurrentPage] = useState(1);
   const nftsPerPage = 5;
   const lastIndex = currentPage * nftsPerPage;
@@ -35,7 +36,7 @@ const AllNftFind = ({ }) => {
   };
 
   const handleRouteChange = (e) => () => {
-    const filteredData = nfts.find((data) => e === data.id )
+    const filteredData = nfts.find((data) => e === data.example_token_id )
     console.log(filteredData);
     router.push({ pathname: `/search/find/allNfts/singleNfts/${e}`, query: {filteredData: JSON.stringify(filteredData)}})
   }
